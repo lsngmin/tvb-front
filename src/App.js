@@ -2,26 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import Footer from './components/Footer/Footer';
 import Navigation from "./components/Navigation/Navigation";
+import MainText from "./components/MainText/MainText";
 
 function App() {
   return (
-    <div className="App">
-        <Navigation/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Footer /> {/* 푸터 추가 */}
+    <div className="XJQ6AKZ">
+        <header>
+            <Navigation/>
+        </header>
+        <MainText/>
+        <Footer />
     </div>
   );
 }

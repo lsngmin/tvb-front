@@ -1,0 +1,37 @@
+.U99Z14 {
+    background-color: #0d0d0d;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.F76Y05 {
+    flex-direction: column;
+}
+.J32G16{
+    font-size: 15px;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: gray;
+}
+.Q49D72 {
+    cursor:pointer;
+    transition: color 0.5s ease-out;
+    text-decoration: none;
+
+    margin: 0 20px;
+}
+.Q49D72:hover {
+    color: rgba(255, 255, 255, 0.9)
+}
+.A61P21{
+    font-size: 11px;
+}
+.A61P20{
+    font-size: 9px;
+}
+.K92A83 {
+    margin-top: 3px;
+}

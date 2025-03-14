@@ -1,0 +1,42 @@
+
+.S08R16 {
+    display: flex;
+    justify-content: center;
+}
+
+.L81Z53 {
+    position: fixed;
+    background-color: #131313;
+    border-radius: 100px;
+    border: 1px solid #262626;
+    padding: 17px 10px;
+    margin-top: 3%;
+    transition:transform 0.5s ease;
+}
+.L81Z53:hover {
+    transform: scale(1.05);
+}
+
+.navbar-items {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    margin: 0;
+    padding: 0;
+
+}
+.F14W46 {
+    font-size: 15px;
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: gray;
+
+    text-decoration: none;
+    margin: 0 18px;
+    transition: color 0.5s ease-out;
+
+}
+.F14W46:hover {
+    color: aliceblue;
+}

@@ -7,12 +7,14 @@
 .L81Z53 {
     position: fixed;
     background-color: #131313;
-    border-radius: 100px;
+    border-radius: 10px;
     border: 1px solid #262626;
-    padding: 15px 10px;
+    padding: 20px 15px;
     margin-top: 50px;
     transition:transform 0.5s ease;
+    z-index: 1000;
 }
+
 .L81Z53:hover {
     transform: scale(1.05);
 }
@@ -21,12 +23,15 @@
     display: flex;
     margin: 0;
     padding: 0;
-
+    align-items: center;
+    list-style-type: none;
 }
+
+
 .F14W46 {
-    font-size: 15px;
-    font-family: "Nanum Gothic", sans-serif;
-    font-weight: 400;
+    font-family: "Onest", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
     font-style: normal;
     color: gray;
 
@@ -37,4 +42,9 @@
 }
 .F14W46:hover {
     color: aliceblue;
+}
+
+.Separator {
+    width: 10px;
+    background-color: gray;
 }

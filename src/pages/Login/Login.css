@@ -1,4 +1,18 @@
+.G12H62 {
 
-.XJQ6AKZ {
-    background-color: #101214;
+    background-color: #131313;
+
+}
+
+.Z84S96 {
+    animation: fadeIn 2.3s forwards;
+    opacity: 0;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

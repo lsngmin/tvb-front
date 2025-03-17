@@ -51,7 +51,6 @@ const Navigation = () => {
                             Login
                         </Button>
                     </li>
-                    <li><button onClick={navigateLogin}>dqwdq</button></li>
                     {/*li><*/}
                     {/*    <IconButton aria-label={'no notifications'}>*/}
                     {/*        <Badge badgeContent={100} color="primary">*/}

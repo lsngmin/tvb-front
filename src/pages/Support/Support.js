@@ -1,20 +1,23 @@
 import React from 'react';
-import "./Introducing.css";
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
-import WarningIcon from '@mui/icons-material/Warning';
+import Typography from '@mui/material/Typography';
+import HelpIcon from '@mui/icons-material/Help';
 import SecurityIcon from '@mui/icons-material/Security';
 import SpeedIcon from '@mui/icons-material/Speed';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import UploadIcon from '@mui/icons-material/Upload';
-import VerifiedIcon from '@mui/icons-material/Verified';
-import Typography from '@mui/material/Typography';
+import PaymentIcon from '@mui/icons-material/Payment';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import Navigation from '../../components/Navigation/Navigation';
+import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 
 const Section = styled(Box)(({ theme }) => ({
     padding: '4rem 0',
     position: 'relative',
     overflow: 'hidden',
+    marginTop: '80px',
     '&::before': {
         content: '""',
         position: 'absolute',
@@ -49,15 +52,16 @@ const Section = styled(Box)(({ theme }) => ({
     },
     [theme.breakpoints.down('sm')]: {
         padding: '2rem 0',
+        marginTop: '60px',
     },
 }));
 
-const ContentWrapper = styled(Box)(({ theme, variant }) => ({
+const ContentWrapper = styled(Box)(({ theme }) => ({
     padding: theme.spacing(6),
     borderRadius: '20px',
-    background: variant === 'transparent' ? 'transparent' : 'rgba(255, 255, 255, 0.03)',
-    backdropFilter: variant === 'transparent' ? 'none' : 'blur(10px)',
-    border: variant === 'transparent' ? 'none' : '1px solid rgba(255, 255, 255, 0.05)',
+    background: 'rgba(255, 255, 255, 0.03)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.05)',
     transition: 'all 0.4s ease-in-out',
     display: 'flex',
     flexDirection: 'column',
@@ -74,13 +78,12 @@ const ContentWrapper = styled(Box)(({ theme, variant }) => ({
         background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.02), transparent)',
         transform: 'translateX(-100%)',
         transition: 'transform 0.6s ease-in-out',
-        display: variant === 'transparent' ? 'none' : 'block',
     },
     '&:hover': {
         transform: 'translateY(-8px)',
-        boxShadow: variant === 'transparent' ? 'none' : '0 20px 40px rgba(0, 0, 0, 0.3)',
-        border: variant === 'transparent' ? 'none' : '1px solid rgba(255, 255, 255, 0.1)',
-        background: variant === 'transparent' ? 'transparent' : 'rgba(255, 255, 255, 0.05)',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        background: 'rgba(255, 255, 255, 0.05)',
         '&::before': {
             transform: 'translateX(100%)',
         },
@@ -172,43 +175,72 @@ const IconWrapper = styled('div')({
     },
 });
 
-const Introducing = () => {
-    return (
-        <Box className="Introducing">
-            <Section>
-                <SectionTitle variant="h1">The Risks of Deepfake</SectionTitle>
-                <Grid container spacing={4}>
-                    <Grid xs={12}>
-                        <ContentWrapper variant="transparent">
-                            <IconWrapper>
-                                <WarningIcon />
-                                <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '2.5rem', color: '#fff' }}>
-                                    A New Threat in the Digital Age
-                                </Typography>
-                            </IconWrapper>
-                            <Typography variant="h6" sx={{ fontSize: '1.5rem', lineHeight: 1.8, mb: 3, color: '#fff' }}>
-                                As deepfake technology advances, fake videos and audio become increasingly realistic and difficult to detect.
-                                This leads to serious issues such as fake news, fraud, and identity theft.
-                            </Typography>
-                        </ContentWrapper>
-                    </Grid>
-                </Grid>
-            </Section>
+const ContactButton = styled(Button)(({ theme }) => ({
+    position: 'fixed',
+    top: '40px',
+    right: '150px',
+    backgroundColor: '#4d0b8c',
+    color: '#fff',
+    padding: '10px 20px',
+    borderRadius: '5px',
+    boxShadow: '0 4px 20px rgba(77, 11, 140, 0.3)',
+    transition: 'all 0.3s ease-in-out',
+    zIndex: 1000,
+    '&:hover': {
+        backgroundColor: '#3700b3',
+        transform: 'translateY(-2px)',
+        boxShadow: '0 6px 25px rgba(77, 11, 140, 0.4)',
+    },
+    [theme.breakpoints.down('sm')]: {
+        top: '35px',
+        right: '120px',
+        padding: '8px 16px',
+    },
+}));
 
+const Support = () => {
+    const navigate = useNavigate();
+
+    const handleContactClick = () => {
+        navigate('/contact');
+    };
+
+    return (
+        <Box sx={{ width: '100%', maxWidth: '1600px', margin: '0 auto', overflow: 'hidden', bgcolor: '#101214' }}>
+            <Navigation />
+            <ContactButton
+                variant="contained"
+                startIcon={<ContactSupportIcon />}
+                onClick={handleContactClick}
+            >
+                Contact Us
+            </ContactButton>
             <Section>
-                <SectionTitle variant="h1">Our Solution</SectionTitle>
+                <SectionTitle>Frequently Asked Questions</SectionTitle>
                 <Grid container spacing={4}>
                     <Grid xs={12} md={6}>
                         <ContentWrapper>
                             <IconWrapper>
-                                <SecurityIcon />
-                                <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '2.5rem', color: '#fff' }}>
-                                    AI-Powered Deepfake Detection
+                                <HelpIcon />
+                                <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '2rem', color: '#fff' }}>
+                                    What is Deepfake?
                                 </Typography>
                             </IconWrapper>
-                            <Typography variant="h6" sx={{ fontSize: '1.5rem', lineHeight: 1.8, color: '#fff' }}>
-                                Utilizing the latest AI models, we accurately analyze the authenticity of images and videos.
-                                Our TensorFlow-based deep learning technology ensures high reliability.
+                            <Typography variant="h6" sx={{ fontSize: '1.3rem', lineHeight: 1.8, color: '#fff' }}>
+                                Deepfake is a type of artificial intelligence that can create or manipulate images and videos to make them appear authentic. Our service helps detect these manipulated contents to protect your digital assets.
+                            </Typography>
+                        </ContentWrapper>
+                    </Grid>
+                    <Grid xs={12} md={6}>
+                        <ContentWrapper>
+                            <IconWrapper>
+                                <SecurityIcon />
+                                <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '2rem', color: '#fff' }}>
+                                    How accurate is the detection?
+                                </Typography>
+                            </IconWrapper>
+                            <Typography variant="h6" sx={{ fontSize: '1.3rem', lineHeight: 1.8, color: '#fff' }}>
+                                Our AI-powered detection system achieves over 99% accuracy in identifying deepfake content. We continuously update our models to stay ahead of new deepfake techniques.
                             </Typography>
                         </ContentWrapper>
                     </Grid>
@@ -216,47 +248,45 @@ const Introducing = () => {
                         <ContentWrapper>
                             <IconWrapper>
                                 <SpeedIcon />
-                                <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '2.5rem', color: '#fff' }}>
-                                    Real-Time Analysis
+                                <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '2rem', color: '#fff' }}>
+                                    How long does analysis take?
                                 </Typography>
                             </IconWrapper>
-                            <Typography variant="h6" sx={{ fontSize: '1.5rem', lineHeight: 1.8, color: '#fff' }}>
-                                Get deepfake detection results in just seconds.
-                                Our system provides instant and accurate analysis, allowing quick responses to potential threats.
+                            <Typography variant="h6" sx={{ fontSize: '1.3rem', lineHeight: 1.8, color: '#fff' }}>
+                                Most analyses are completed within seconds. For longer videos, the process may take a few minutes depending on the file size and complexity.
                             </Typography>
                         </ContentWrapper>
                     </Grid>
-                </Grid>
-            </Section>
-
-            <Section>
-                <SectionTitle variant="h1">How It Works</SectionTitle>
-                <Grid container spacing={4}>
-                    <Grid xs={12}>
-                        <ContentWrapper variant="transparent">
+                    <Grid xs={12} md={6}>
+                        <ContentWrapper>
                             <IconWrapper>
-                                <UploadIcon />
-                                <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '2.5rem', color: '#fff' }}>
-                                    Simple 3-Step Process
+                                <PaymentIcon />
+                                <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '2rem', color: '#fff' }}>
+                                    What are the pricing options?
                                 </Typography>
                             </IconWrapper>
-                            <Box component="ol" sx={{ mt: 2 }}>
-                                <Typography component="li" variant="h6" sx={{ fontSize: '1.5rem', lineHeight: 1.8, mb: 3, color: '#fff' }}>
-                                    Upload the image for analysis.
+                            <Typography variant="h6" sx={{ fontSize: '1.3rem', lineHeight: 1.8, color: '#fff' }}>
+                                We offer flexible pricing plans starting from $29/month. Each plan includes a certain number of analyses per month. Contact us for custom enterprise solutions.
+                            </Typography>
+                        </ContentWrapper>
+                    </Grid>
+                    <Grid xs={12} md={6}>
+                        <ContentWrapper>
+                            <IconWrapper>
+                                <SupportAgentIcon />
+                                <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '2rem', color: '#fff' }}>
+                                    How can I get support?
                                 </Typography>
-                                <Typography component="li" variant="h6" sx={{ fontSize: '1.5rem', lineHeight: 1.8, mb: 3, color: '#fff' }}>
-                                    Our AI automatically detects if the content is deepfake.
-                                </Typography>
-                                <Typography component="li" variant="h6" sx={{ fontSize: '1.5rem', lineHeight: 1.8, color: '#fff' }}>
-                                    Review the analysis results and take appropriate actions.
-                                </Typography>
-                            </Box>
+                            </IconWrapper>
+                            <Typography variant="h6" sx={{ fontSize: '1.3rem', lineHeight: 1.8, color: '#fff' }}>
+                                Our support team is available 24/7 through email, live chat, and phone. We typically respond to inquiries within 24 hours.
+                            </Typography>
                         </ContentWrapper>
                     </Grid>
                 </Grid>
             </Section>
         </Box>
     );
-}
+};
 
-export default Introducing;
+export default Support;

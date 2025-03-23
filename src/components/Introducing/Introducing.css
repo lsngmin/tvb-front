@@ -1,11 +1,78 @@
-.F06Q41 {
-    display: flex;
-    justify-content: center;
-    background-color: white;
+.Introducing {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #101214;
 }
-.Z60P51 {
-    color: #cfff00;
-    font-family: "Hind", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+
+.Introducing .MuiTypography-h3 {
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    font-size: 2rem !important;  /* 글씨 크기 조절 */
+}
+
+.Introducing .MuiTypography-h6 {
+    color: #fff;
+    font-weight: 500;
+    margin: 0;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 1.3rem !important;  /* 글씨 크기 조절 */
+}
+
+.Introducing .MuiTypography-h6:hover {
+    opacity: 1;
+}
+
+.Introducing ol {
+    margin: 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.Introducing li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.Introducing li:hover {
+    transform: translateX(10px);
+}
+
+.Introducing li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(255,255,255,0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.Introducing li:hover::before {
+    transform: scale(1.2);
+    box-shadow: 0 2px 8px rgba(255,255,255,0.5);
+}
+
+@media (max-width: 600px) {
+    .Introducing {
+        padding: 0 1rem;
+    }
+
+    .Introducing .MuiTypography-h3 {
+        font-size: 1.8rem !important;  /* 모바일에서 글씨 크기 조절 */
+    }
+
+    .Introducing .MuiTypography-h6 {
+        font-size: 1.1rem !important;  /* 모바일에서 글씨 크기 조절 */
+    }
 }

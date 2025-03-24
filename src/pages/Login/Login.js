@@ -5,6 +5,7 @@ import { createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import './Login.css';
 import { getDesignTokens, inputsCustomizations } from './customTheme';
+import { testApi, login } from "../../components/Api/Api";
 
 const providers = [
   { id: 'github', name: 'GitHub' },
@@ -51,14 +52,42 @@ const Login = () => {
       if (!formState.email || !formState.password) {
         return { error: '이메일과 비밀번호를 모두 입력해주세요.' };
       }
+
+      try {
+        // API 요청 데이터 형식 변경
+        const requestData = {
+          user: {
+            userId: formState.email
+          },
+          password: {
+            password: formState.password
+          }
+        };
+
+        // API 호출
+        const response = await login(requestData);
+
+        if (response != null) {
+          //localStorage.setItem('token', response.token);
+          window.location.href = '/';
+          return { success: true };
+        } else {
+          return { error: response.message || '로그인에 실패했습니다.' };
+        }
+      } catch (error) {
+        //console.error('로그인 에러:', error);
+        return { error: '서버 연결에 실패했습니다.' };
+      }
     }
-    const promise = new Promise((resolve) => {
-      setTimeout(() => {
-        console.log(`Sign in with ${provider.id}`, formState);
-        resolve({ error: 'This is a mock error message.' });
-      }, 500);
-    });
-    return promise;
+
+    // 소셜 로그인 처리
+    if (provider.id === 'github') {
+      window.location.href = '/oauth2/authorization/github';
+    } else if (provider.id === 'google') {
+      window.location.href = '/oauth2/authorization/google';
+    }
+
+    return { error: '지원하지 않는 로그인 방식입니다.' };
   };
 
   const handleInputChange = (field) => (event) => {

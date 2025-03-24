@@ -6,6 +6,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import './Login.css';
 import { getDesignTokens, inputsCustomizations } from './customTheme';
 import { testApi, login } from "../../components/Api/Api";
+import axios from "axios";
+import {useAuth} from "../../components/Api/Auth/AuthProvider";
+import {useNavigate} from "react-router-dom";
 
 const providers = [
   { id: 'github', name: 'GitHub' },
@@ -14,6 +17,9 @@ const providers = [
 ];
 
 const Login = () => {
+  const {setAccessToken} = useAuth();
+  const navigate = useNavigate();
+
   const mode = 'dark';
   const brandingDesignTokens = getDesignTokens(mode);
   const theme = createTheme({
@@ -54,7 +60,13 @@ const Login = () => {
       }
 
       try {
-        // API 요청 데이터 형식 변경
+
+
+        const prod_url = "http://tvbox.us-east-2.elasticbeanstalk.com"
+        const loca_url = "http://localhost:8080"
+        const path = loca_url + "/api/v1/auth/";
+
+
         const requestData = {
           user: {
             userId: formState.email
@@ -63,17 +75,11 @@ const Login = () => {
             password: formState.password
           }
         };
+        const response = await axios.post(path, requestData, { withCredentials: true });
+        const {accessToken} = response.data;
 
-        // API 호출
-        const response = await login(requestData);
-
-        if (response != null) {
-          //localStorage.setItem('token', response.token);
-          window.location.href = '/';
-          return { success: true };
-        } else {
-          return { error: response.message || '로그인에 실패했습니다.' };
-        }
+        setAccessToken(accessToken);
+        navigate("/");
       } catch (error) {
         //console.error('로그인 에러:', error);
         return { error: '서버 연결에 실패했습니다.' };

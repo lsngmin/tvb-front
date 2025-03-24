@@ -4,7 +4,7 @@ import { SignInPage } from '@toolpad/core/SignInPage';
 import { createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import './Login.css';
-import { getDesignTokens, inputsCustomizations } from 'customTheme';
+import { getDesignTokens, inputsCustomizations } from './customTheme';
 
 const providers = [
   { id: 'github', name: 'GitHub' },

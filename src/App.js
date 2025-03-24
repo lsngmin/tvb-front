@@ -5,8 +5,7 @@ import Login from "./pages/Login/Login"; // 초기 페이지
 import Support from "./pages/Support/Support";
 import Contact from "./pages/Contact/Contact";
 import Pricing from "./pages/Pricing/Pricing";
-
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Signup from "./pages/Signup/Signup";
 
 function App() {
     return (
@@ -14,6 +13,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
                 <Route path="/support" element={<Support/>} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/pricing" element={<Pricing />} />

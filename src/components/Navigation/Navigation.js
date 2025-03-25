@@ -52,25 +52,6 @@ const Navigation = () => {
                             Login
                         </Button>
                     </li>
-                    <li>
-                        <Button onClick={navigateSignUp}
-                                className="login-button"
-                                variant="contained"
-                                color="primary"
-                                startIcon={<AccountCircleIcon />}
-                                sx={{
-                                    backgroundColor: '#4d0b8c',
-                                    color: 'gray',
-                                    '&:hover': {
-                                        backgroundColor: '#3700b3',
-                                    },
-                                    padding: '10px 20px',
-                                    borderRadius: '5px',
-                                }}
-                        >
-                            Sign Up
-                        </Button>
-                    </li>
                 </ul>
             </nav>
         </div>

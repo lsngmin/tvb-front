@@ -6,9 +6,11 @@ import Support from "./pages/Support/Support";
 import Contact from "./pages/Contact/Contact";
 import Pricing from "./pages/Pricing/Pricing";
 import Signup from "./pages/Signup/Signup";
+import {AuthProvider} from "./components/Api/Auth/AuthProvider";
 
 function App() {
     return (
+        <AuthProvider>
         <Router>
             <Routes>
                 <Route path="/" element={<Main />} />
@@ -20,6 +22,7 @@ function App() {
                 {/*<Route path="/services" element={<Services />} />*/}
             </Routes>
         </Router>
+        </AuthProvider>
     );
 }
 export default App;

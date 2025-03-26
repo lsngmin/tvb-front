@@ -1,334 +1,188 @@
 import React, { useState } from 'react';
-import { Typography, TextField, Button, Alert, Box } from '@mui/material';
-import GoogleIcon from '@mui/icons-material/Google';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Typography, TextField, Button, Box, Stack } from '@mui/material';
 import Navigation from '../../components/Navigation/Navigation';
 import './Signup.css';
+import { AppProvider } from '@toolpad/core/AppProvider';
+import { createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { getDesignTokens, inputsCustomizations } from '../Login/customTheme';
 
-const Signup = () => {
-    const [formData, setFormData] = useState({
+const SignUp = () => {
+    const mode = 'dark';
+    const brandingDesignTokens = getDesignTokens(mode);
+    const theme = createTheme({
+        ...brandingDesignTokens,
+        palette: {
+            ...brandingDesignTokens.palette,
+            mode: mode,
+        },
+        components: {
+            ...inputsCustomizations,
+            MuiButton: {
+                ...inputsCustomizations.MuiButton,
+                styleOverrides: {
+                    ...inputsCustomizations.MuiButton.styleOverrides,
+                    root: ({ theme }) => ({
+                        ...inputsCustomizations.MuiButton.styleOverrides.root({ theme }),
+                        '&.Mui-disabled': {
+                            opacity: 0.5,
+                            color: 'inherit',
+                            backgroundColor: 'inherit',
+                            backgroundImage: 'inherit',
+                        },
+                    }),
+                },
+            },
+        },
+    });
+
+    const [formState, setFormState] = useState({
         email: '',
         password: '',
         confirmPassword: '',
-        name: ''
     });
-    const [errors, setErrors] = useState({});
-    const [isEmailVerified, setIsEmailVerified] = useState(false);
-    const [verificationCode, setVerificationCode] = useState('');
-    const [showVerificationInput, setShowVerificationInput] = useState(false);
-    const [signupMethod, setSignupMethod] = useState(null); // 'email' or 'social'
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-        if (errors[name]) {
-            setErrors(prev => ({
-                ...prev,
-                [name]: ''
-            }));
-        }
-    };
-
-    const validateEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const handleEmailVerification = async () => {
-        if (!validateEmail(formData.email)) {
-            setErrors(prev => ({
-                ...prev,
-                email: 'Please enter a valid email address.'
-            }));
-            return;
-        }
-
-        try {
-            // TODO: Email duplicate check API call
-            const isDuplicate = false; // Replace with API response
-
-            if (isDuplicate) {
-                setErrors(prev => ({
-                    ...prev,
-                    email: 'This email is already in use.'
-                }));
-                return;
-            }
-
-            // TODO: Email verification code sending API call
-            setShowVerificationInput(true);
-        } catch (error) {
-            setErrors(prev => ({
-                ...prev,
-                email: 'An error occurred during email verification.'
-            }));
-        }
-    };
-
-    const handleVerifyCode = async () => {
-        try {
-            // TODO: Verification code check API call
-            const isValid = true; // Replace with API response
-
-            if (isValid) {
-                setIsEmailVerified(true);
-                setShowVerificationInput(false);
-            } else {
-                setErrors(prev => ({
-                    ...prev,
-                    verificationCode: 'Invalid verification code.'
-                }));
-            }
-        } catch (error) {
-            setErrors(prev => ({
-                ...prev,
-                verificationCode: 'An error occurred while verifying the code.'
-            }));
-        }
-    };
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
 
-        const newErrors = {};
-        if (!formData.email) newErrors.email = 'Please enter your email.';
-        if (!formData.password) newErrors.password = 'Please enter your password.';
-        if (formData.password !== formData.confirmPassword) {
-            newErrors.confirmPassword = 'Passwords do not match.';
-        }
-        if (!formData.name) newErrors.name = 'Please enter your name.';
-
-        if (Object.keys(newErrors).length > 0) {
-            setErrors(newErrors);
+        if (!formState.email || !formState.password || !formState.confirmPassword) {
+            setError('모든 필드를 입력해주세요.');
             return;
         }
 
-        if (!isEmailVerified) {
-            setErrors(prev => ({
-                ...prev,
-                email: 'Please complete email verification.'
-            }));
+        if (formState.password !== formState.confirmPassword) {
+            setError('비밀번호가 일치하지 않습니다.');
             return;
         }
 
         try {
-            // TODO: Signup API call (password encryption)
-            console.log('Signup data:', formData);
-            // Redirect to login page on success
-        } catch (error) {
-            setErrors(prev => ({
-                ...prev,
-                submit: 'An error occurred during signup.'
-            }));
+            // TODO: 실제 회원가입 API 호출
+            console.log('Sign up data:', formState);
+            // 성공 시 로그인 페이지로 리다이렉트
+            window.location.href = '/login';
+        } catch (err) {
+            setError('회원가입 중 오류가 발생했습니다.');
         }
     };
 
-    const handleSocialSignUp = async (platform) => {
-        try {
-            // TODO: 소셜 로그인 API 호출
-            console.log(`${platform} 로그인 시도`);
-            // 성공 시 회원가입 완료 처리
-        } catch (error) {
-            setErrors(prev => ({
-                ...prev,
-                submit: `${platform} 로그인 중 오류가 발생했습니다.`
-            }));
-        }
-    };
-
-    const textFieldStyle = {
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.1)' },
-            '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.2)' },
-            '&.Mui-focused fieldset': { borderColor: '#4d0b8c' },
-            '& input': { color: '#fff' }
-        },
-        '& .MuiInputLabel-root': {
-            color: 'rgba(255, 255, 255, 0.7)',
-            '&.Mui-focused': { color: '#4d0b8c' }
-        }
+    const handleInputChange = (field) => (event) => {
+        setFormState((prev) => ({
+            ...prev,
+            [field]: event.target.value,
+        }));
+        setError('');
     };
 
     return (
-        <div>
-            <Navigation />
-            <section className="signup-section">
-                <div className="content-wrapper">
-                    <Typography variant="h4" component="h1" className="title">
-                        Sign Up
-                    </Typography>
+        <div className="G12H62">
+            <AppProvider theme={theme}>
+                <CssBaseline />
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        minHeight: '100vh',
+                        padding: '2rem',
+                    }}
+                >
+                    <Box
+                        component="form"
+                        onSubmit={handleSubmit}
+                        className="Z84S96"
+                        sx={{
+                            width: '100%',
+                            maxWidth: '400px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Typography variant="h4" component="h1" gutterBottom>
+                            Create Account
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" gutterBottom>
+                            Enter your details to create your account
+                        </Typography>
 
-                    {errors.submit && (
-                        <Alert severity="error" sx={{ mb: 2 }}>
-                            {errors.submit}
-                        </Alert>
-                    )}
+                        <Stack spacing={3} sx={{ width: '100%', mt: 4, mb: 2 }}>
+                            <TextField
+                                fullWidth
+                                label="Email"
+                                name="email"
+                                value={formState.email}
+                                onChange={handleInputChange('email')}
+                                placeholder="Enter your email"
+                                required
+                                sx={{ mb: 1 }}
+                                InputLabelProps={{
+                                    sx: { mb: 1 }
+                                }}
+                            />
+                            <TextField
+                                fullWidth
+                                label="Password"
+                                name="password"
+                                type="password"
+                                value={formState.password}
+                                onChange={handleInputChange('password')}
+                                placeholder="Enter your password"
+                                required
+                                sx={{ mb: 1 }}
+                                InputLabelProps={{
+                                    sx: { mb: 1 }
+                                }}
+                            />
+                            <TextField
+                                fullWidth
+                                label="Confirm Password"
+                                name="confirmPassword"
+                                type="password"
+                                value={formState.confirmPassword}
+                                onChange={handleInputChange('confirmPassword')}
+                                placeholder="Confirm your password"
+                                required
+                                sx={{ mb: 1 }}
+                                InputLabelProps={{
+                                    sx: { mb: 1 }
+                                }}
+                            />
 
-                    {!signupMethod ? (
-                        <div className="signup-methods">
-                            <Button
-                                variant="contained"
-                                onClick={() => setSignupMethod('email')}
-                                className="method-button"
-                            >
-                                Sign up with Email
-                            </Button>
-                            <Button
-                                variant="contained"
-                                onClick={() => setSignupMethod('social')}
-                                className="method-button"
-                            >
-                                Sign up with Social Account
-                            </Button>
-                        </div>
-                    ) : signupMethod === 'email' ? (
-                        <form onSubmit={handleSubmit}>
-                            <div className="email-verification">
-                                <TextField
-                                    fullWidth
-                                    name="email"
-                                    label="Email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    error={!!errors.email}
-                                    helperText={errors.email}
-                                    disabled={isEmailVerified}
-                                    sx={textFieldStyle}
-                                />
-                                <Button
-                                    variant="contained"
-                                    onClick={handleEmailVerification}
-                                    disabled={isEmailVerified}
-                                    className="button verify-button"
-                                >
-                                    Verify
-                                </Button>
-                            </div>
-
-                            {showVerificationInput && !isEmailVerified && (
-                                <div className="verification-input">
-                                    <TextField
-                                        fullWidth
-                                        label="Verification Code"
-                                        value={verificationCode}
-                                        onChange={(e) => setVerificationCode(e.target.value)}
-                                        error={!!errors.verificationCode}
-                                        helperText={errors.verificationCode}
-                                        sx={textFieldStyle}
-                                    />
-                                    <Button
-                                        variant="contained"
-                                        onClick={handleVerifyCode}
-                                        className="button verify-button"
-                                    >
-                                        Confirm
-                                    </Button>
-                                </div>
+                            {error && (
+                                <Typography color="error" variant="body2">
+                                    {error}
+                                </Typography>
                             )}
-
-                            <div className="form-group">
-                                <TextField
-                                    fullWidth
-                                    name="password"
-                                    label="Password"
-                                    type="password"
-                                    value={formData.password}
-                                    onChange={handleChange}
-                                    error={!!errors.password}
-                                    helperText={errors.password}
-                                    sx={textFieldStyle}
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <TextField
-                                    fullWidth
-                                    name="confirmPassword"
-                                    label="Confirm Password"
-                                    type="password"
-                                    value={formData.confirmPassword}
-                                    onChange={handleChange}
-                                    error={!!errors.confirmPassword}
-                                    helperText={errors.confirmPassword}
-                                    sx={textFieldStyle}
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <TextField
-                                    fullWidth
-                                    name="name"
-                                    label="Name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    error={!!errors.name}
-                                    helperText={errors.name}
-                                    sx={textFieldStyle}
-                                />
-                            </div>
 
                             <Button
                                 type="submit"
                                 variant="contained"
-                                disabled={!isEmailVerified}
-                                className="button"
+                                fullWidth
+                                disabled={!formState.email || !formState.password || !formState.confirmPassword}
                             >
-                                <span>Sign Up</span>
-                            </Button>
-                        </form>
-                    ) : (
-                        <div className="social-signup">
-                            <Button
-                                variant="outlined"
-                                startIcon={
-                                    <img src="/google.png" alt="Google" style={{ width: 20, height: 20 }} />
-                                }
-                                onClick={() => handleSocialSignUp('google')}
-                                className="social-button"
-                                sx={{ textTransform: 'none' }}
-                            >
-                                Continue with Google
+                                Sign Up
                             </Button>
 
-                            <Button
-                                variant="outlined"
-                                startIcon={
-                                    <img src="/kakao.png" alt="Kakao" style={{ width: 20, height: 20 }} />
-                                }
-                                onClick={() => handleSocialSignUp('kakao')}
-                                className="social-button"
-                            >
-                                Continue with Kakao
-                            </Button>
-
-                            <Button
-                                variant="outlined"
-                                startIcon={
-                                    <img src="/naver_icon.png" alt="Naver" style={{ width: 20, height: 20 }} />
-                                }
-                                onClick={() => handleSocialSignUp('naver')}
-                                className="social-button"
-                            >
-                                Continue with Naver
-                            </Button>
-                        </div>
-                    )}
-
-                    <Button
-                        variant="text"
-                        onClick={() => setSignupMethod(null)}
-                        className="back-button"
-                    >
-                        Back
-                    </Button>
-                </div>
-            </section>
+                            <Typography variant="body2" sx={{ mt: 2, textAlign: 'center' }}>
+                                Already have an account?{' '}
+                                <Button
+                                    variant="text"
+                                    color="primary"
+                                    onClick={() => window.location.href = '/login'}
+                                >
+                                    Sign In
+                                </Button>
+                            </Typography>
+                        </Stack>
+                    </Box>
+                </Box>
+            </AppProvider>
         </div>
     );
 };
 
-export default Signup;
+export default SignUp;

@@ -1,27 +1,32 @@
 .Introducing {
     width: 100%;
-    max-width: 1600px;
+    max-width: 1000px;
     margin: 0 auto;
     overflow: hidden;
-    background-color: #101214;
+    background-color: transparent;
+    padding: 0 6rem;
 }
 
 .Introducing .MuiTypography-h3 {
-    font-weight: 700;
+    font-weight: 600;
     margin: 0;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     position: relative;
-    font-size: 2rem !important;  /* 글씨 크기 조절 */
+    font-size: 1.8rem !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
 }
 
 .Introducing .MuiTypography-h6 {
     color: #fff;
-    font-weight: 500;
+    font-weight: 400;
     margin: 0;
     opacity: 0.9;
     transition: opacity 0.3s ease-in-out;
-    font-size: 1.3rem !important;  /* 글씨 크기 조절 */
+    font-size: 1.1rem !important;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
 }
 
 .Introducing .MuiTypography-h6:hover {
@@ -65,14 +70,14 @@
 
 @media (max-width: 600px) {
     .Introducing {
-        padding: 0 1rem;
+        padding: 0 2rem;
     }
 
     .Introducing .MuiTypography-h3 {
-        font-size: 1.8rem !important;  /* 모바일에서 글씨 크기 조절 */
+        font-size: 1.5rem !important;
     }
 
     .Introducing .MuiTypography-h6 {
-        font-size: 1.1rem !important;  /* 모바일에서 글씨 크기 조절 */
+        font-size: 1rem !important;
     }
 }

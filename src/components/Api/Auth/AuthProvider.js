@@ -11,8 +11,8 @@ export const AuthProvider = ({ children }) => {
 
         const prod_url = "http://tvbox.us-east-2.elasticbeanstalk.com"
         const loca_url = "http://localhost:8080"
-        const path = loca_url + "/api/v1/auth/me";
-        const path2 = loca_url + "/api/v1/auth/refresh";
+        const path = prod_url + "/api/v1/auth/me";
+        const path2 = prod_url + "/api/v1/auth/refresh";
 
         console.log(accessToken)
 

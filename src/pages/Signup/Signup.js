@@ -66,7 +66,7 @@ const SignUp = () => {
             // TODO: 실제 회원가입 API 호출
             const prod_url = "http://tvbox.us-east-2.elasticbeanstalk.com"
             const loca_url = "http://localhost:8080"
-            const path = loca_url + "/api/v1/register/";
+            const path = prod_url + "/api/v1/register/";
 
             const requestData = {
                 user: {

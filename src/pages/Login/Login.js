@@ -58,7 +58,7 @@ const Login = () => {
       try {
         const prod_url = "http://tvbox.us-east-2.elasticbeanstalk.com"
         const loca_url = "http://localhost:8080"
-        const path = loca_url + "/api/v1/auth/login";
+        const path = prod_url + "/api/v1/auth/login";
 
 
         const requestData = {

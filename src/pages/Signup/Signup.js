@@ -6,10 +6,14 @@ import { AppProvider } from '@toolpad/core/AppProvider';
 import { createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { getDesignTokens, inputsCustomizations } from '../Login/customTheme';
+import {useNavigate} from "react-router-dom";
+
+import axios from "axios";
 
 const SignUp = () => {
     const mode = 'dark';
     const brandingDesignTokens = getDesignTokens(mode);
+    const navigate = useNavigate();
     const theme = createTheme({
         ...brandingDesignTokens,
         palette: {
@@ -60,9 +64,29 @@ const SignUp = () => {
 
         try {
             // TODO: 실제 회원가입 API 호출
-            console.log('Sign up data:', formState);
-            // 성공 시 로그인 페이지로 리다이렉트
-            window.location.href = '/login';
+            const prod_url = "http://tvbox.us-east-2.elasticbeanstalk.com"
+            const loca_url = "http://localhost:8080"
+            const path = loca_url + "/api/v1/register/";
+
+            const requestData = {
+                user: {
+                    userId: formState.email,
+                    loginType: "EMAIL"
+                },
+                profile: {
+                    nickname: String(Math.floor(Math.random() * 100000))
+                },
+                password: {
+                    password: formState.password
+                }
+            };
+            const response = await axios.post(path, requestData, { withCredentials: true });
+            const {userId} = response.data;
+            console.log('Sign up data:', userId);
+            if(userId === formState.email) {
+                navigate("/");
+            }
+
         } catch (err) {
             setError('회원가입 중 오류가 발생했습니다.');
         }

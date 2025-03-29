@@ -6,7 +6,9 @@ import Support from "./pages/Support/Support";
 import Contact from "./pages/Contact/Contact";
 import Pricing from "./pages/Pricing/Pricing";
 import Signup from "./pages/Signup/Signup";
+import FreeTrial from "./pages/FreeTrial/FreeTrial";
 import {AuthProvider} from "./components/Api/Auth/AuthProvider";
+
 
 function App() {
     return (
@@ -19,6 +21,7 @@ function App() {
                 <Route path="/support" element={<Support/>} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/pricing" element={<Pricing />} />
+                <Route path="/free-trial" element={<FreeTrial />} />
                 {/*<Route path="/services" element={<Services />} />*/}
             </Routes>
         </Router>

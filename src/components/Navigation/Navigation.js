@@ -43,7 +43,7 @@ const Navigation = () => {
             <nav className="L81Z53">
                 <ul className="navbar-items">
                     <li><Link className="F14W46" to="/">Features</Link></li>
-                    <li><Link className="F14W46" to="/about">Free Trial</Link></li>
+                    <li><Link className="F14W46" to="/free-trial">Free Trial</Link></li>
                     <li><Link className="F14W46" to="/pricing">Pricing</Link></li>
                     <li><Link className="F14W46" to="/api-docs">API Docs</Link></li>
                     <li><Link className="F14W46" to="/support">Support</Link></li>

@@ -1,18 +1,15 @@
 import React from 'react';
 import "./Navigation.css"
-import {Divider, Box, Button, IconButton} from '@mui/material';
+import {Divider, Box, Button} from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Separator } from '@base-ui-components/react/separator';
-import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
 import {useNavigate, Link} from "react-router-dom";
 import {useAuth} from "../Api/Auth/AuthProvider";
-import { createContext, useState, useContext, useEffect } from 'react';
-
+import { useState, useEffect } from 'react';
+import axios from "axios";
 
 const Navigation = () => {
     const navigate = useNavigate();
-    const { userInfo } = useAuth();
+    const { userInfo, logout } = useAuth();
     const [clicked, setClicked] = useState(false);
 
 
@@ -26,17 +23,12 @@ const Navigation = () => {
         navigate('/login');
     }
 
-    const navigateSignUp = () => {
-        navigate('/signup');
-    }
-
     const handleClick = () => {
         if (userInfo) {
             alert(`환영합니다. ${userInfo.userId}`);
             setClicked(true);  // 클릭한 상태로 변경
         }
     };
-
 
     return (
         <div className="S08R16">
@@ -53,7 +45,27 @@ const Navigation = () => {
                     </Box>
                     <li>
                         {userInfo ? (
+                            <div>
                                 <Button onClick={handleClick}
+                                        className="login-button"
+                                        variant="contained"
+                                        color="primary"
+                                        startIcon={<AccountCircleIcon />}
+                                        sx={{
+                                            backgroundColor: '#4d0b8c',
+                                            color: 'gray',
+                                            '&:hover': {
+                                                backgroundColor: '#3700b3',
+                                            },
+                                            padding: '10px 20px',
+                                            marginLeft: '30px',
+                                            borderRadius: '5px',
+                                            marginRight: '0px',
+                                        }}
+                                >
+                                    INFO
+                                </Button>
+                                <Button onClick={logout}
                                         className="login-button"
                                         variant="contained"
                                         color="primary"
@@ -70,8 +82,9 @@ const Navigation = () => {
                                             marginRight: '10px',
                                         }}
                                 >
-                                    INFO
+                                    Logout
                                 </Button>
+                            </div>
                             ) : (
                                 <Button onClick={navigateLogin}
                                         className="login-button"

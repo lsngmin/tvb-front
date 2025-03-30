@@ -1,4 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
+
 import axios from "axios";
 
 const AuthContext = createContext();
@@ -7,40 +8,55 @@ export const AuthProvider = ({ children }) => {
     const [accessToken, setAccessToken] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
 
+    const logout = () => {
+        setAccessToken(null);
+        setUserInfo(null);
+
+        axios.post(process.env.REACT_APP_API_URL_LOGOUT, {}, {
+            withCredentials: true
+        })
+        window.location.reload();
+    }
+
     useEffect(() => {
-
-        const prod_url = "https://api.tvsbox.click"
-        const loca_url = "http://localhost:8080"
-        const path = prod_url + "/api/v1/auth/me";
-        const path2 = prod_url + "/api/v1/auth/refresh";
-        //aa
-        console.log(accessToken)
-
-        if (accessToken) {
-            axios.get(path, {
-                headers: {
-                    "Authorization": `Bearer ${accessToken}`
-                },
-                withCredentials: true
-            })
-                .then(response => {
-                    setUserInfo(response.data);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        } else {
-            axios.post(path2, {}, {
-                withCredentials: true
-            })
-                .then(response => {
-                    const {accessToken} = response.data;
-                    setAccessToken(accessToken);
-                })
+        const fetchAccessToken = async () => {
+            try {
+                if (!accessToken) {
+                    const response = await axios.post(process.env.REACT_APP_API_URL_REFRESH, {}, {withCredentials: true})
+                    setAccessToken(response.data.accessToken)
+                }
+            } catch (error) {
+                if (error.response.status === 401) {
+                    console.log("401");
+                }
+            }
         }
+        fetchAccessToken();
+    }, []);
+
+    useEffect(() => {
+        if (!accessToken) return;
+
+        const fetchUserData = async () => {
+            if (accessToken) {
+                axios.get(process.env.REACT_APP_API_URL_ME, {
+                    headers: {
+                        "Authorization": `Bearer ${accessToken}`
+                    },
+                    withCredentials: true
+                })
+                    .then(response => {
+                        setUserInfo(response.data);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
+        };
+        fetchUserData();
     },  [accessToken]);
     return (
-        <AuthContext.Provider value={{ accessToken, setAccessToken, userInfo }}>
+        <AuthContext.Provider value={{ accessToken, setAccessToken, userInfo, setUserInfo, logout }}>
             {children}
         </AuthContext.Provider>
     );

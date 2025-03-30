@@ -58,7 +58,7 @@ const Login = () => {
       try {
         const prod_url = "https://api.tvsbox.click"
         const loca_url = "http://localhost:8080"
-        const path = prod_url + "/api/v1/auth/login";
+        const path = loca_url + "/api/v1/auth/login";
 
 
         const requestData = {
@@ -94,22 +94,6 @@ const Login = () => {
         email: '',
         password: '',
     });
-
-    // const signIn = async (provider) => {
-    //     if (provider.id === 'credentials') {
-    //         if (!formState.email || !formState.password) {
-    //             return { error: '이메일과 비밀번호를 모두 입력해주세요.' };
-    //         }
-    //     }
-    //     const promise = new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             console.log(`Sign in with ${provider.id}`, formState);
-    //             resolve({ error: 'This is a mock error message.' });
-    //         }, 500);
-    //     });
-    //     return promise;
-    // };
-
     const handleInputChange = (field) => (event) => {
         setFormState((prev) => ({
             ...prev,
@@ -224,5 +208,4 @@ const Login = () => {
         </div>
     );
 };
-
 export default Login;

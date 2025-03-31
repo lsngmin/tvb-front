@@ -7,11 +7,11 @@ import {useAuth} from "../Api/Auth/AuthProvider";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 
+
 const Navigation = () => {
     const navigate = useNavigate();
     const { userInfo, logout } = useAuth();
     const [clicked, setClicked] = useState(false);
-
 
     useEffect(() => {
         if (clicked) {
@@ -26,12 +26,12 @@ const Navigation = () => {
     const handleClick = () => {
         if (userInfo) {
             alert(`환영합니다. ${userInfo.userId}`);
-            setClicked(true);  // 클릭한 상태로 변경
+            setClicked(true);
         }
     };
 
     return (
-        <div className="S08R16">
+        <div className="S08R16" style={{ backgroundColor: 'transparent' }}>
             <nav className="L81Z53">
                 <ul className="navbar-items">
                     <li><Link className="F14W46" to="/">Features</Link></li>
@@ -39,74 +39,56 @@ const Navigation = () => {
                     <li><Link className="F14W46" to="/pricing">Pricing</Link></li>
                     <li><Link className="F14W46" to="/api-docs">API Docs</Link></li>
                     <li><Link className="F14W46" to="/support">Support</Link></li>
-                    <Box display="flex" alignItems="center" height="25px">
+                    <Box display="flex" alignItems="center" height="20px">
                         <Divider orientation="vertical" flexItem
                                  sx={{borderColor: 'gray', marginLeft: '3px', border: '1px solid gray'}}/>
                     </Box>
                     <li>
                         {userInfo ? (
-                            <div>
-                                <Button onClick={handleClick}
-                                        className="login-button"
-                                        variant="contained"
-                                        color="primary"
-                                        startIcon={<AccountCircleIcon />}
-                                        sx={{
-                                            backgroundColor: '#4d0b8c',
-                                            color: 'gray',
-                                            '&:hover': {
-                                                backgroundColor: '#3700b3',
-                                            },
-                                            padding: '10px 20px',
-                                            marginLeft: '30px',
-                                            borderRadius: '5px',
-                                            marginRight: '0px',
-                                        }}
-                                >
-                                    INFO
-                                </Button>
-                                <Button onClick={logout}
-                                        className="login-button"
-                                        variant="contained"
-                                        color="primary"
-                                        startIcon={<AccountCircleIcon />}
-                                        sx={{
-                                            backgroundColor: '#4d0b8c',
-                                            color: 'gray',
-                                            '&:hover': {
-                                                backgroundColor: '#3700b3',
-                                            },
-                                            padding: '10px 20px',
-                                            marginLeft: '30px',
-                                            borderRadius: '5px',
-                                            marginRight: '10px',
-                                        }}
-                                >
-                                    Logout
-                                </Button>
-                            </div>
-                            ) : (
-                                <Button onClick={navigateLogin}
-                                        className="login-button"
-                                        variant="contained"
-                                        color="primary"
-                                        startIcon={<AccountCircleIcon />}
-                                        sx={{
-                                            backgroundColor: '#4d0b8c',
-                                            color: 'gray',
-                                            '&:hover': {
-                                                backgroundColor: '#3700b3',
-                                            },
-                                            padding: '10px 20px',
-                                            marginLeft: '30px',
-                                            borderRadius: '5px',
-                                            marginRight: '10px',
-                                        }}
-                                >
-                                    Login
-                                </Button>
-                            )}
-
+                            <Button onClick={handleClick}
+                                    className="login-button"
+                                    variant="contained"
+                                    color="primary"
+                                    startIcon={<AccountCircleIcon sx={{ fontSize: '1rem' }} />}
+                                    sx={{
+                                        backgroundColor: '#000000',
+                                        color: 'white',
+                                        '&:hover': {
+                                            backgroundColor: '#222222',
+                                        },
+                                        padding: '4px 8px',
+                                        marginLeft: '15px',
+                                        borderRadius: '3px',
+                                        marginRight: '8px',
+                                        fontSize: '0.75rem',
+                                        minWidth: 'auto',
+                                    }}
+                            >
+                                INFO
+                            </Button>
+                        ) : (
+                            <Button onClick={navigateLogin}
+                                    className="login-button"
+                                    variant="contained"
+                                    color="primary"
+                                    startIcon={<AccountCircleIcon sx={{ fontSize: '1rem' }} />}
+                                    sx={{
+                                        backgroundColor: '#000000',
+                                        color: 'white',
+                                        '&:hover': {
+                                            backgroundColor: '#222222',
+                                        },
+                                        padding: '4px 8px',
+                                        marginLeft: '15px',
+                                        borderRadius: '3px',
+                                        marginRight: '8px',
+                                        fontSize: '0.75rem',
+                                        minWidth: 'auto',
+                                    }}
+                            >
+                                Login
+                            </Button>
+                        )}
                     </li>
                 </ul>
             </nav>

@@ -47,48 +47,6 @@ const Login = () => {
             },
         },
     });
-  
-  const signIn = async (provider) => {
-    if (provider.id === 'credentials') {
-      if (!formState.email || !formState.password) {
-        return { error: '이메일과 비밀번호를 모두 입력해주세요.' };
-      }
-
-      try {
-        const prod_url = "https://api.tvsbox.click"
-        const loca_url = "http://localhost:8080"
-        const path = loca_url + "/api/v1/auth/login";
-
-
-        const requestData = {
-          user: {
-            userId: formState.email
-          },
-          password: {
-            password: formState.password
-          }
-        };
-        const response = await axios.post(path, requestData, { withCredentials: true });
-        const {accessToken} = response.data;
-
-        setAccessToken(accessToken);
-        navigate("/");
-      } catch (error) {
-        //console.error('로그인 에러:', error);
-        return { error: '서버 연결에 실패했습니다.' };
-      }
-    }
-
-    // 소셜 로그인 처리
-    if (provider.id === 'github') {
-      window.location.href = "localhost:8080/oauth2/authorization/github";
-    } else if (provider.id === 'google') {
-        window.location.href = process.env.REACT_APP_API_URL_GOOGLE;
-    }
-
-    return { error: '지원하지 않는 로그인 방식입니다.' };
-  };
-
 
     const [formState, setFormState] = useState({
         email: '',

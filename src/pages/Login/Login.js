@@ -82,9 +82,9 @@ const Login = () => {
 
     // 소셜 로그인 처리
     if (provider.id === 'github') {
-      window.location.href = '/oauth2/authorization/github';
+      window.location.href = "localhost:8080/oauth2/authorization/github";
     } else if (provider.id === 'google') {
-      window.location.href = '/oauth2/authorization/google';
+        window.location.href = process.env.REACT_APP_API_URL_GOOGLE;
     }
 
     return { error: '지원하지 않는 로그인 방식입니다.' };

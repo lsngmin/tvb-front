@@ -8,6 +8,7 @@ import Pricing from "./pages/Pricing/Pricing";
 import Signup from "./pages/Signup/Signup";
 import FreeTrial from "./pages/FreeTrial/FreeTrial";
 import {AuthProvider} from "./components/Api/Auth/AuthProvider";
+import OAuthRedirectPage from "./pages/Auth/Auth";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/free-trial" element={<FreeTrial />} />
+                <Route path="/oauthredirect" element={<OAuthRedirectPage/>} />
                 {/*<Route path="/services" element={<Services />} />*/}
             </Routes>
         </Router>

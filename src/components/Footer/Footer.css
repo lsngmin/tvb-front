@@ -1,10 +1,11 @@
 .U99Z14 {
-    background-color: #101214;
+    background-color: #ffffff;
     text-align: center;
     padding: 20px 0;
     position: relative;
     bottom: 0;
     width: 100%;
+    border-top: 1px solid #e0e0e0;
 }
 .F76Y05 {
     flex-direction: column;
@@ -14,23 +15,26 @@
     font-family: "Titillium Web", sans-serif;
     font-weight: 600;
     font-style: normal;
-    color: gray;
+    color: #333333;
 }
 .Q49D72 {
     cursor:pointer;
-    transition: color 0.5s ease-out;
+    transition: color 0.5s ease-out, text-decoration 0.3s ease;
     text-decoration: none;
-
+    color: #333333;
     margin: 0 20px;
 }
 .Q49D72:hover {
-    color: rgba(255, 255, 255, 0.9)
+    color: #000000;
+    text-decoration: underline;
 }
 .A61P21{
     font-size: 11px;
+    color: #555555;
 }
 .A61P20{
     font-size: 9px;
+    color: #777777;
 }
 .K92A83 {
     margin-top: 3px;

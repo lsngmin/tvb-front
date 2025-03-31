@@ -42,8 +42,8 @@ const GridItem = styled(Grid)(({ theme }) => ({
 const ContentWrapper = styled(Box)(({ theme, variant }) => ({
     padding: theme.spacing(3),
     borderRadius: '12px',
-    background: variant === 'transparent' ? 'rgba(255, 255, 255, 0.01)' : 'rgba(255, 255, 255, 0.01)',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
+    background: variant === 'transparent' ? 'transparent' : '#f9f9f9',
+    border: '1px solid #e0e0e0',
     transition: 'all 0.4s ease-in-out',
     display: 'flex',
     flexDirection: 'column',
@@ -52,6 +52,8 @@ const ContentWrapper = styled(Box)(({ theme, variant }) => ({
     overflow: 'hidden',
     '&:hover': {
         transform: 'translateY(-8px)',
+        borderColor: '#cccccc',
+        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)'
     },
 }));
 
@@ -60,7 +62,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     fontWeight: 700,
     textAlign: 'center',
     marginBottom: '3rem',
-    color: '#fff',
+    color: '#1f1f1f',
     position: 'relative',
     fontFamily: 'Titillium Web',
     letterSpacing: '-0.03em',
@@ -78,7 +80,7 @@ const IconWrapper = styled('div')({
     '& svg': {
         marginRight: '1.5rem',
         fontSize: '2.5rem',
-        color: '#fff',
+        color: '#1E90FF',
         opacity: 0.9,
         transition: 'all 0.3s ease-in-out',
         position: 'relative',
@@ -102,7 +104,7 @@ const Introducing = () => {
                                 <Typography variant="h3" component="h2" sx={{
                                     fontWeight: 700,
                                     fontSize: '2rem',
-                                    color: '#fff',
+                                    color: '#1f1f1f',
                                     letterSpacing: '0.1em',
                                     '& span': {
                                         marginRight: '0.3em'
@@ -120,7 +122,7 @@ const Introducing = () => {
                             <Typography variant="h6" sx={{
                                 fontSize: '1.5rem',
                                 lineHeight: 1.8,
-                                color: '#fff'
+                                color: '#333333'
                             }}>
                                 As deepfake technology advances, fake videos and audio become increasingly realistic and difficult to detect.
                                 This leads to serious issues such as fake news, fraud, and identity theft.
@@ -140,7 +142,7 @@ const Introducing = () => {
                                 <Typography variant="h3" component="h2" sx={{
                                     fontWeight: 700,
                                     fontSize: '2rem',
-                                    color: '#fff',
+                                    color: '#1f1f1f',
                                     letterSpacing: '0.1em',
                                     '& span': {
                                         marginRight: '0.3em'
@@ -156,7 +158,7 @@ const Introducing = () => {
                             <Typography variant="h6" sx={{
                                 fontSize: '1.5rem',
                                 lineHeight: 1.8,
-                                color: '#fff'
+                                color: '#333333'
                             }}>
                                 Utilizing the latest AI models, we accurately analyze the authenticity of images and videos.
                                 Our TensorFlow-based deep learning technology ensures high reliability.
@@ -170,7 +172,7 @@ const Introducing = () => {
                                 <Typography variant="h3" component="h2" sx={{
                                     fontWeight: 700,
                                     fontSize: '2rem',
-                                    color: '#fff',
+                                    color: '#1f1f1f',
                                     letterSpacing: '0.1em',
                                     '& span': {
                                         marginRight: '0.3em'
@@ -185,7 +187,7 @@ const Introducing = () => {
                             <Typography variant="h6" sx={{
                                 fontSize: '1.5rem',
                                 lineHeight: 1.8,
-                                color: '#fff'
+                                color: '#333333'
                             }}>
                                 Get deepfake detection results in just seconds.
                                 Our system provides instant and accurate analysis, allowing quick responses to potential threats.
@@ -205,7 +207,7 @@ const Introducing = () => {
                                 <Typography variant="h3" component="h2" sx={{
                                     fontWeight: 700,
                                     fontSize: '2rem',
-                                    color: '#fff',
+                                    color: '#1f1f1f',
                                     letterSpacing: '0.05em',
                                     '& span': {
                                         marginRight: '0.2em'
@@ -220,21 +222,23 @@ const Introducing = () => {
                             </IconWrapper>
                             <Box component="ol" sx={{
                                 mt: 2,
+                                listStyle: 'none',
+                                paddingLeft: 0,
                                 '& li': {
                                     marginBottom: '1.5rem',
                                     lineHeight: 1.8,
                                     fontSize: '1.2rem',
-                                    color: '#fff'
+                                    color: '#333333'
                                 }
                             }}>
                                 <Typography component="li">
-                                    Upload the image for analysis.
+                                        1. Upload the image for analysis.
                                 </Typography>
                                 <Typography component="li">
-                                    Our AI automatically detects if the content is deepfake.
+                                    2. Our AI automatically detects if the content is deepfake.
                                 </Typography>
                                 <Typography component="li">
-                                    Review the analysis results and take appropriate actions.
+                                    3. Review the analysis results and take appropriate actions.
                                 </Typography>
                             </Box>
                         </ContentWrapper>

@@ -1,17 +1,16 @@
 import React from 'react';
 import "./Navigation.css"
-import {Divider, Box, Button, IconButton} from '@mui/material';
+import {Divider, Box, Button} from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Separator } from '@base-ui-components/react/separator';
-import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
 import {useNavigate, Link} from "react-router-dom";
-import { useAuth } from "../Api/Auth/AuthProvider";
+import {useAuth} from "../Api/Auth/AuthProvider";
 import { useState, useEffect } from 'react';
+import axios from "axios";
+
 
 const Navigation = () => {
     const navigate = useNavigate();
-    const { userInfo } = useAuth();
+    const { userInfo, logout } = useAuth();
     const [clicked, setClicked] = useState(false);
 
     useEffect(() => {
@@ -22,10 +21,6 @@ const Navigation = () => {
 
     const navigateLogin = () => {
         navigate('/login');
-    }
-
-    const navigateSignUp = () => {
-        navigate('/signup');
     }
 
     const handleClick = () => {

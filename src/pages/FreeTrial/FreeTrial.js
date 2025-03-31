@@ -7,6 +7,8 @@ import SecurityIcon from '@mui/icons-material/Security';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import './FreeTrial.css';
+import axios from "axios";
+import {useAuth} from "../../components/Api/Auth/AuthProvider";
 import { styled } from '@mui/material/styles';
 
 const Section = styled(Box)(({ theme }) => ({
@@ -47,6 +49,7 @@ const FreeTrial = () => {
     const [previewUrl, setPreviewUrl] = useState(null);
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [result, setResult] = useState(null);
+    const {accessToken} = useAuth();
 
     const handleBackToMain = () => {
         navigate('/');
@@ -69,7 +72,19 @@ const FreeTrial = () => {
         if (!selectedImage) return;
 
         setIsAnalyzing(true);
-        setTimeout(() => {
+
+        const formData = new FormData();
+        formData.append('files', selectedImage);
+
+        const response = axios.post("http://localhost:8080/api/v1/files/upload", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Authorization": `Bearer ${accessToken}`
+            }, withCredentials: true
+        })
+            .then(response => console.log(response))
+        setTimeout(
+            () => {
             setResult({
                 isDeepfake: Math.random() > 0.5,
                 confidence: (Math.random() * 100).toFixed(2)

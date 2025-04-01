@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
         })
         setTimeout(() => {
             window.location.reload();
-        }, 100)
+        }, 1000)
     }
 
     useEffect(() => {

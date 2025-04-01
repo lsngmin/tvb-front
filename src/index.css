@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body {
+    @apply bg-background;
+}
 .L68P49 {
     text-align: center;
     font-size: 50px;

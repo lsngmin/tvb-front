@@ -15,7 +15,9 @@ export const AuthProvider = ({ children }) => {
         axios.post(process.env.REACT_APP_API_URL_LOGOUT, {}, {
             withCredentials: true
         })
-        window.location.reload();
+        setTimeout(() => {
+            window.location.reload();
+        }, 100)
     }
 
     useEffect(() => {

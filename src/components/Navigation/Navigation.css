@@ -5,12 +5,19 @@
 }
 
 .L81Z53 {
-    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    max-width: 80rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+
+    /*position: fixed;*/
     background-color: transparent !important;
-    border-radius: 10px;
-    border: 1px solid #262626;
-    padding: 20px 15px;
-    margin-top: 20px;
+    /*border-radius: 10px;*/
+    /*border: 1px solid #262626;*/
+    /*margin-top: 20px;*/
     transition:transform 0.5s ease;
     z-index: 1000;
 }
@@ -47,4 +54,20 @@
 .Separator {
     width: 10px;
     background-color: gray;
+}
+.F91A91 {
+    width: auto;
+    height: 2rem;
+}
+.K64H25 {
+    padding: .375rem;
+    margin:  -.375rem;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.O24A12{
+    display: flex;
+    align-items: center;
+    column-gap: 3rem;
 }

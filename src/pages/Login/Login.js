@@ -94,7 +94,7 @@ const Login = () => {
         if (provider.id === 'github') {
             window.location.href = '/oauth2/authorization/github';
         } else if (provider.id === 'google') {
-            window.location.href = '/oauth2/authorization/google';
+            window.location.href = process.env.REACT_APP_API_URL_GOOGLE;
         }
 
         // credentials, github, google 외의 provider 경우 에러 반환

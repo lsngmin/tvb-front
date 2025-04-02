@@ -8,17 +8,45 @@ const Footer = () => {
     };
 
     return (
-        <footer className="U99Z14">
-            <div className="F76Y05">
-                <div className="K92A83">
-                    <Link to="/contact" className="J32G16 Q49D72" onClick={handleContactClick}>Contact Us</Link>
-                    <a className="J32G16 Q49D72" href="#" target="_blank" rel="noopener noreferrer">Privacy & Cookie Policy</a>
-                    <a className="J32G16 Q49D72" href="#" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
-                </div>
-                <p className="J32G16 A61P21">ⓒlsngmin. All Rights Reserved.</p>
-                <p className="J32G16 A61P20">Hosting by AWS</p>
+        <section className="bg-white">
+            <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+                <nav className="flex flex-wrap justify-center -mx-5 -my-2">
+                    <div className="px-5 py-2">
+                        <a href="#" className="text-sm leading-6 text-gray-500 hover:text-gray-900">
+                            About
+                        </a>
+                    </div>
+                    <div className="px-5 py-2">
+                        <a href="#" className="text-sm leading-6 text-gray-500 hover:text-gray-900">
+                            Blog
+                        </a>
+                    </div>
+                    <div className="px-5 py-2">
+                        <a href="#" className="text-smleading-6 text-gray-500 hover:text-gray-900">
+                            Team
+                        </a>
+                    </div>
+                    <div className="px-5 py-2">
+                        <a href="#" className="text-sm leading-6 text-gray-500 hover:text-gray-900">
+                            Pricing
+                        </a>
+                    </div>
+                    <div className="px-5 py-2">
+                        <a href="#" className="text-sm leading-6 text-gray-500 hover:text-gray-900">
+                            Contact
+                        </a>
+                    </div>
+                    <div className="px-5 py-2">
+                        <a href="#" className="text-sm leading-6 text-gray-500 hover:text-gray-900">
+                            Terms
+                        </a>
+                    </div>
+                </nav>
+                <p className="mt-8 text-xs leading-6 text-center text-gray-400">
+                    © TEXT MESSAGE..TEXT MESSAGE..TEXT MESSAGE..
+                </p>
             </div>
-        </footer>
+        </section>
     );
 };
 export default Footer;

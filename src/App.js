@@ -1,7 +1,9 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main/Main";
-import Login from "./pages/Login/Login"; // 초기 페이지
+// import Login from "./pages/Login/Login"; // 초기 페이지
+import Login from "./pages/Login/NewLogin"; // 초기 페이지
+
 import Support from "./pages/Support/Support";
 import Contact from "./pages/Contact/Contact";
 import Pricing from "./pages/Pricing/Pricing";

@@ -29,6 +29,7 @@ import {
 } from '@heroicons/react/24/outline'
 
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import NavigationAuthButton from "../NavigationAuthButton";
 
 const products = [
     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -124,9 +125,8 @@ const Navigation = () => {
                     <Link className="text-sm/6 font-semibold text-gray-900" to="/support">Support</Link>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link className="text-sm/6 font-semibold text-gray-900" to="/login">
-                        Log in <span aria-hidden="true">&rarr;</span>
-                    </Link>
+
+                    <NavigationAuthButton/>
                 </div>
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">

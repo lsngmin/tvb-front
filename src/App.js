@@ -11,22 +11,25 @@ import Signup from "./pages/Signup/Signup";
 import FreeTrial from "./pages/FreeTrial/FreeTrial";
 import {AuthProvider} from "./components/Api/Auth/AuthProvider";
 import OAuthRedirectPage from "./pages/Auth/Auth";
+import CustomRoutes from "./Routes";
 import "./output.css";
-
 function App() {
     return (
         <AuthProvider>
         <Router>
-            <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/support" element={<Support/>} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/pricing" element={<Pricing />} />
-                <Route path="/free-trial" element={<FreeTrial />} />
-                <Route path="/oauthredirect" element={<OAuthRedirectPage/>} />
-            </Routes>
+
+            {/*<Routes>*/}
+            {/*    <Route path="/" element={<Main />} />*/}
+            {/*    <Route path="/login" element={<Login />} />*/}
+            {/*    <Route path="/signup" element={<Signup />} />*/}
+            {/*    <Route path="/support" element={<Support/>} />*/}
+            {/*    <Route path="/contact" element={<Contact />} />*/}
+            {/*    <Route path="/pricing" element={<Pricing />} />*/}
+            {/*    <Route path="/free-trial" element={<FreeTrial />} />*/}
+            {/*    <Route path="/oauthredirect" element={<OAuthRedirectPage/>} />*/}
+
+            <CustomRoutes/>
+            {/*</Routes>*/}
         </Router>
         </AuthProvider>
     );

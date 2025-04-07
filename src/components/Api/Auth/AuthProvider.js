@@ -7,6 +7,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [accessToken, setAccessToken] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const logout = () => {
         setAccessToken(null);
@@ -31,6 +32,8 @@ export const AuthProvider = ({ children }) => {
                 if (error.response.status === 401) {
                     console.log("401");
                 }
+            } finally {
+                setIsLoading(false);
             }
         }
         fetchAccessToken();
@@ -58,7 +61,7 @@ export const AuthProvider = ({ children }) => {
         fetchUserData();
     },  [accessToken]);
     return (
-        <AuthContext.Provider value={{ accessToken, setAccessToken, userInfo, setUserInfo, logout }}>
+        <AuthContext.Provider value={{ accessToken, setAccessToken, userInfo, setUserInfo, logout, isLoading }}>
             {children}
         </AuthContext.Provider>
     );

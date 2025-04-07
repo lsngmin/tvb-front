@@ -1,5 +1,4 @@
 import React from 'react';
-import './Footer.css';  // 스타일 파일을 따로 분리해서 관리
 import { Link } from 'react-router-dom';
 
 const Footer = () => {

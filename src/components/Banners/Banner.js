@@ -26,16 +26,10 @@ export default function Banner() {
                         href="#"
                         className="flex-none rounded-full bg-gray-900 px-2 py-0.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                     >
-                        Feedback<span aria-hidden="true">&rarr;</span>
+                        Go<span aria-hidden="true">&rarr;</span>
                     </a>
                 </div>
                 <div className="flex flex-1 justify-end ">
-                    <button type="button"
-                            onClick={() => setVisible(false)}
-                            className="-m-3 p-3 focus-visible:outline-offset-[-4px]">
-                        <span className="sr-only">Dismiss</span>
-                        <XMarkIcon aria-hidden="true" className="size-5 text-gray-900" />
-                    </button>
                 </div>
             </div>
 

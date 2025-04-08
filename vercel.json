@@ -1,4 +1,11 @@
 {
+  "rewrites": [
+    {
+      "source": "/api/:match*",
+      "destination": "https://api.tvsbox.click/:match*"
+    }
+  ],
+
   "git": {
     "deploymentEnabled": {
       "develop": false

@@ -30,6 +30,8 @@ import {
 
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import NavigationAuthButton from "../NavigationAuthButton";
+import MobileNavigationAuthButton from "../MobileNavigationAuthButton";
+
 
 const products = [
     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -60,7 +62,7 @@ const Navigation = () => {
         <header className="bg-white">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-6 lg:px-8 pb-0">
                 <div className="flex lg:flex-1">
-                    <a href={process.env.REACT_APP_URL_FRONT} className="-m-1.5 p-1.5">
+                    <a href="/" className="-m-1.5 p-1.5">
                         <span className="sr-only">truebox</span>
                         <img className="h-8 w-auto" src={Logo} alt="truebox"/>
                     </a>
@@ -133,13 +135,10 @@ const Navigation = () => {
                 <div className="fixed inset-0 z-10" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
-                        <a href="#" className="-m-1.5 p-1.5">
+                        <a href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
-                            <img
-                                alt=""
-                                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                                className="h-8 w-auto"
-                            />
+                            <img className="h-6 w-auto" src={Logo} alt="truebox"/>
+
                         </a>
                         <button
                             type="button"
@@ -171,32 +170,19 @@ const Navigation = () => {
                                         ))}
                                     </DisclosurePanel>
                                 </Disclosure>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                                >
-                                    Features
-                                </a>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                                >
-                                    Marketplace
-                                </a>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                                >
-                                    Company
-                                </a>
+                                <Link className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" to="/free-trial">Free Trial</Link>
+                                <Link className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" to="/pricing">Pricing</Link>
+                                <Link className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" to="/api-docs">Docs</Link>
+                                <Link className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" to="/support">Support</Link>
                             </div>
-                            <div className="py-6">
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                                >
-                                    Log in
-                                </a>
+                            <div className="py-8">
+                                <MobileNavigationAuthButton/>
+                                {/*<a*/}
+                                {/*    href="#"*/}
+                                {/*    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"*/}
+                                {/*>*/}
+                                {/*    Log in*/}
+                                {/*</a>*/}
                             </div>
                         </div>
                     </div>

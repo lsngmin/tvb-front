@@ -17,10 +17,6 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(userId, password);
-        const prod_url = "https://api.tvsbox.click";
-        const loca_url = "http://localhost:8080"; // 로컬 테스트용 URL 주석 처리
-        const path = loca_url + "/api/v1/auth/login";
 
         const requestData = {
             user: {
@@ -32,7 +28,7 @@ export default function Login() {
         };
 
         try {
-            const response = await axios.post(path, requestData, {withCredentials: true });
+            const response = await axios.post(process.env.REACT_APP_API_URL_SIGNIN , requestData, {withCredentials: true });
 
             const { accessToken } = response.data;
             setAccessToken(accessToken);

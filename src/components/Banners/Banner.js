@@ -1,4 +1,5 @@
 import { XMarkIcon } from '@heroicons/react/20/solid'
+import {useState} from "react";
 
 export default function Banner() {
     const today = new Date();
@@ -7,7 +8,8 @@ export default function Banner() {
         month: "long",
         day: "numeric"
     });
-
+    const [visible, setVisible] = useState(true);
+    if (!visible) return null;
     return (
         <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -26,7 +28,9 @@ export default function Banner() {
                 </a>
             </div>
             <div className="flex flex-1 justify-end">
-                <button type="button" className="-m-3 p-3 focus-visible:outline-offset-[-4px]">
+                <button type="button"
+                        onClick={() => setVisible(false)}
+                        className="-m-3 p-3 focus-visible:outline-offset-[-4px]">
                     <span className="sr-only">Dismiss</span>
                     <XMarkIcon aria-hidden="true" className="size-5 text-gray-900" />
                 </button>

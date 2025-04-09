@@ -51,7 +51,7 @@ const Navigation = () => {
         setTimeout(() => {
             setMobileMenuOpen(false);
             setIsClosing(false);
-        }, 200); // 애니메이션 지속 시간과 일치시킴
+        }, 500); // 애니메이션 지속 시간과 일치시킴
     };
     return (
         <header className="bg-white">
@@ -129,11 +129,18 @@ const Navigation = () => {
                     <NavigationAuthButton/>
                 </div>
             </nav>
-            <Dialog open={mobileMenuOpen} onClose={handleCloseMenu} className="lg:hidden">
+            <Dialog open={mobileMenuOpen} className="lg:hidden" onClose={handleCloseMenu}>
                 <div className={`fixed inset-0 z-10 ${!isClosing ? 'fade-in' : 'fade-out'}`}>
                     <div className="fixed inset-0 bg-black/25" aria-hidden="true" />
                 </div>
-                <DialogPanel className={`fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 ${!isClosing ? 'slide-in' : 'slide-out'}`}>
+                <DialogPanel className={`fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 ${!isClosing ? 'slide-in' : 'slide-out'}`}
+                             // onAnimationEnd={() => {
+                             //     if (isClosing) {
+                             //         setMobileMenuOpen(false);
+                             //         setIsClosing(false);
+                             //     }
+                             // }}
+                >
                     <div className="flex items-center justify-between">
                         <a href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>

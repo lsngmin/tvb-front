@@ -1,10 +1,8 @@
 import React, {Fragment} from 'react';
 import "./Navigation.css"
-import {Divider, Box, Button} from '@mui/material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import {useNavigate, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {useAuth} from "../Api/Auth/AuthProvider";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Logo from "../../logo.svg";
 import "../../output.css";
 import {
@@ -44,20 +42,17 @@ const callsToAction = [
     { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
     { name: 'Contact sales', href: '#', icon: PhoneIcon },
 ]
-
 const Navigation = () => {
-    const { userInfo, logout, loading} = useAuth();
-    const [clicked, setClicked] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [isClosing, setIsClosing] = useState(false);
 
-
-    const handleClick = () => {
-        if (userInfo) {
-            alert(`환영합니다. ${userInfo.userId}`);
-            setClicked(true);
-        }
+    const handleCloseMenu = () => {
+        setIsClosing(true);
+        setTimeout(() => {
+            setMobileMenuOpen(false);
+            setIsClosing(false);
+        }, 200); // 애니메이션 지속 시간과 일치시킴
     };
-
     return (
         <header className="bg-white">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-6 lg:px-8 pb-0">
@@ -134,18 +129,19 @@ const Navigation = () => {
                     <NavigationAuthButton/>
                 </div>
             </nav>
-            <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-                <div className="fixed inset-0 z-10" />
-                <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <Dialog open={mobileMenuOpen} onClose={handleCloseMenu} className="lg:hidden">
+                <div className={`fixed inset-0 z-10 ${!isClosing ? 'fade-in' : 'fade-out'}`}>
+                    <div className="fixed inset-0 bg-black/25" aria-hidden="true" />
+                </div>
+                <DialogPanel className={`fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 ${!isClosing ? 'slide-in' : 'slide-out'}`}>
                     <div className="flex items-center justify-between">
                         <a href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <img className="h-6 w-auto" src={Logo} alt="truebox"/>
-
                         </a>
                         <button
                             type="button"
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={handleCloseMenu}
                             className="-m-2.5 rounded-md p-2.5 text-gray-700"
                         >
                             <span className="sr-only">Close menu</span>
@@ -194,5 +190,4 @@ const Navigation = () => {
         </header>
     );
 }
-
 export default Navigation;

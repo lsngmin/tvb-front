@@ -3,7 +3,16 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
-      colors: {
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+        'max-height': 'max-height',
+      },
+      transitionDuration: {
+        '0': '0ms',
+        '200': '200ms',
+        '300': '300ms',
+        '400': '400ms',
       }
     },
   },

@@ -1,73 +1,38 @@
-.S08R16 {
-    display: flex;
-    justify-content: center;
-    background-color: transparent !important;
+/* Navigation.css */
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
 }
 
-.L81Z53 {
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    max-width: 80rem;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem;
-
-    /*position: fixed;*/
-    background-color: transparent !important;
-    /*border-radius: 10px;*/
-    /*border: 1px solid #262626;*/
-    /*margin-top: 20px;*/
-    transition:transform 0.5s ease;
-    z-index: 1000;
+@keyframes slideOutRight {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
 }
 
-.L81Z53:hover {
-    transform: scale(1.05);
+.slide-in {
+    animation: slideInRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.navbar-items {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    list-style-type: none;
+.slide-out {
+    animation: slideOutRight 0.4s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+    animation-fill-mode: forwards;
 }
 
-
-.F14W46 {
-    font-family: "Onest", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    color: gray;
-
-    text-decoration: none;
-    margin: 0 18px;
-    transition: color 0.5s ease-out;
-
-}
-.F14W46:hover {
-    color: aliceblue;
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
-.Separator {
-    width: 10px;
-    background-color: gray;
-}
-.F91A91 {
-    width: auto;
-    height: 2rem;
-}
-.K64H25 {
-    padding: .375rem;
-    margin:  -.375rem;
-    color: inherit;
-    text-decoration: inherit;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.O24A12{
-    display: flex;
-    align-items: center;
-    column-gap: 3rem;
+.fade-out {
+    animation: fadeOut 0.4s ease-in forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }

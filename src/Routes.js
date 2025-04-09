@@ -58,6 +58,15 @@ function AnimatedRoutes() {
                         </motion.div>
                     }
                     />
+                <Route
+                    path="/signup"
+                    element={
+                        <Signup />
+
+                    }
+                    />
+
+
             </Routes>
         </AnimatePresence>
     );

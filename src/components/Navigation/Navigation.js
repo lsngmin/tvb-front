@@ -83,19 +83,14 @@ const Navigation = () => {
                             Product
                             <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
                         </PopoverButton>
-                        <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-200"
-                        enterFrom="opacity-0 translate-y-1"
-                        enterTo="opacity-100 translate-y-0"
-                        leave="transition ease-in duration-150"
-                        leaveFrom="opacity-100 translate-y-0"
-                        leaveTo="opacity-0 translate-y-1"
-                    >
-
                         <PopoverPanel
                             transition
-                            className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
+                            className=" transition transform
+                            absolute top-full -left-8 z-10 mt-3 w-screen max-w-md
+                            overflow-hidden rounded-3xl bg-white ring-1 shadow-lg
+                            ring-gray-900/5 data-closed:translate-y-1
+                            data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out
+                            data-leave:duration-150 data-leave:ease-in"
                         >
                             <div className="p-4">
                                 {products.map((item) => (
@@ -129,8 +124,6 @@ const Navigation = () => {
                                 ))}
                             </div>
                         </PopoverPanel>
-                        </Transition>
-
                     </Popover>
                     <Link className="text-sm/6 font-semibold text-gray-900" to="/free-trial">Free Trial</Link>
                     <Link className="text-sm/6 font-semibold text-gray-900" to="/pricing">Pricing</Link>
@@ -138,7 +131,6 @@ const Navigation = () => {
                     <Link className="text-sm/6 font-semibold text-gray-900" to="/support">Support</Link>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-
                     <NavigationAuthButton/>
                 </div>
             </nav>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import "./Navigation.css"
 import {Divider, Box, Button} from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -16,7 +16,7 @@ import {
     Popover,
     PopoverButton,
     PopoverGroup,
-    PopoverPanel,
+    PopoverPanel, Transition,
 } from '@headlessui/react'
 import {
     ArrowPathIcon,
@@ -83,6 +83,15 @@ const Navigation = () => {
                             Product
                             <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
                         </PopoverButton>
+                        <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-200"
+                        enterFrom="opacity-0 translate-y-1"
+                        enterTo="opacity-100 translate-y-0"
+                        leave="transition ease-in duration-150"
+                        leaveFrom="opacity-100 translate-y-0"
+                        leaveTo="opacity-0 translate-y-1"
+                    >
 
                         <PopoverPanel
                             transition
@@ -120,6 +129,8 @@ const Navigation = () => {
                                 ))}
                             </div>
                         </PopoverPanel>
+                        </Transition>
+
                     </Popover>
                     <Link className="text-sm/6 font-semibold text-gray-900" to="/free-trial">Free Trial</Link>
                     <Link className="text-sm/6 font-semibold text-gray-900" to="/pricing">Pricing</Link>

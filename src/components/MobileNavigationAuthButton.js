@@ -36,7 +36,7 @@ export default function MobileNavigationAuthButton() {
                 </>
 
             ) : (
-                <Link className="-mx-3 block  rounded-lg text-base/7 font-semibold text-gray-900 hover:bg-gray-50" to="/login">
+                <Link className="my-2 -mx-3 px-3 py-2.5 block rounded-lg text-base/7 font-semibold text-gray-900 hover:bg-gray-50" to="/login">
                     Log in <span aria-hidden="true">&rarr;</span>
                 </Link>
             )}

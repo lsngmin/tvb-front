@@ -24,7 +24,7 @@ export default function SecondStep({onUploadComplete, onLoading}) {
     };
 
     return (
-        <div className={`max-w-7xl mx-auto p-6 mt-10 rounded-2xl shadow-lg border border-gray-200`}>
+        <div className={`max-w-sm sm:max-w-7xl mx-auto p-6 mt-10 rounded-2xl shadow-lg border border-gray-200`}>
         <div className="flex justify-center py-10">
             <GridLoader
                 loading

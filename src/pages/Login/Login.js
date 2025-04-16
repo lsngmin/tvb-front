@@ -79,7 +79,12 @@ const Login = () => {
                     },
                 };
 
-                const response = await axios.post(path, requestData, { withCredentials: true });
+                const response = await axios.post(path, requestData, {
+                    withCredentials: true,
+                    headers: {
+                        'X-RequestID': crypto.randomUUID()
+                    },
+                });
                 const { accessToken } = response.data;
 
                 setAccessToken(accessToken);

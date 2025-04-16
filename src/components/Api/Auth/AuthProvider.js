@@ -46,7 +46,8 @@ export const AuthProvider = ({ children }) => {
             if (accessToken) {
                 axios.get(process.env.REACT_APP_API_URL_ME, {
                     headers: {
-                        "Authorization": `Bearer ${accessToken}`
+                        "Authorization": `Bearer ${accessToken}`,
+                        'X-RequestID': crypto.randomUUID()
                     },
                     withCredentials: true
                 })

@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontSize: {
+        'xxs': '0.5rem',
+      },
       animation: {
         'floating': 'floating 2s ease-in-out infinite',
       },

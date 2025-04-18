@@ -19,11 +19,11 @@ export default function Banner() {
                         <svg viewBox="0 0 2 2" aria-hidden="true" className="mx-2 inline size-0.5 fill-current">
                             <circle r={1} cx={1} cy={1} />
                         </svg>
-                        See the issues we're fixing
+                        See the issues on git
                     </p>
 
                     <a
-                        href="#"
+                        href="/issue"
                         className="flex-none rounded-full bg-gray-900 px-2 py-0.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                     >
                         Go <span aria-hidden="true">&rarr;</span>

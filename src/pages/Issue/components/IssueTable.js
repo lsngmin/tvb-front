@@ -46,7 +46,10 @@ function IssueTable() {
                             className="p-4 border border-gray-300 rounded-lg "
                         >
                             <h3 className="text-sm sm:text-lg font-semibold">{issue.title}&nbsp; #{issue.number} - </h3>
-                            <p className="text-xs sm:text-sm text-gray-500 mt-1.5 ml-1.5">{issue.body}</p>
+                            <p className="text-xs sm:text-sm text-gray-500 mt-1.5 ml-1.5 mb-1">{issue.body}</p>
+                            <span className="inline-flex items-center rounded-md bg-gray-50 mt-1 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset">
+                                Affected Server. TrueVisionBoxAPIServer
+                            </span>
                         </div>
                     </div>
 

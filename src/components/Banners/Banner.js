@@ -19,14 +19,14 @@ export default function Banner() {
                         <svg viewBox="0 0 2 2" aria-hidden="true" className="mx-2 inline size-0.5 fill-current">
                             <circle r={1} cx={1} cy={1} />
                         </svg>
-                        we’d love your feedback!
+                        See the issues we're fixing
                     </p>
 
                     <a
                         href="#"
                         className="flex-none rounded-full bg-gray-900 px-2 py-0.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                     >
-                        Go<span aria-hidden="true">&rarr;</span>
+                        Go <span aria-hidden="true">&rarr;</span>
                     </a>
                 </div>
                 <div className="flex flex-1 justify-end ">
@@ -40,14 +40,14 @@ export default function Banner() {
                     <svg viewBox="0 0 2 2" aria-hidden="true" className="mx-2 inline size-0.5 fill-current">
                         <circle r={1} cx={1} cy={1} />
                     </svg>
-                    Our service is currently in testing — we’d love your feedback!
+                    Our service is currently in testing — See the open issues and what we’re fixing
                 </p>
 
                 <a
                     href="#"
                     className="flex-none rounded-full bg-gray-900 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                 >
-                    Feedback<span aria-hidden="true">&rarr;</span>
+                    Issue <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
             <div className="flex flex-1 justify-end ">

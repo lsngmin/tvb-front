@@ -15,21 +15,7 @@ const Footer = () => {
                             About
                         </a>
                     </div>
-                    <div className="px-5 py-2">
-                        <a href="#" className="text-sm leading-6 text-gray-500 hover:text-gray-900">
-                            Blog
-                        </a>
-                    </div>
-                    <div className="px-5 py-2">
-                        <a href="#" className="text-smleading-6 text-gray-500 hover:text-gray-900">
-                            Team
-                        </a>
-                    </div>
-                    <div className="px-5 py-2">
-                        <a href="#" className="text-sm leading-6 text-gray-500 hover:text-gray-900">
-                            Pricing
-                        </a>
-                    </div>
+
                     <div className="px-5 py-2">
                         <a href="#" className="text-sm leading-6 text-gray-500 hover:text-gray-900">
                             Contact
@@ -42,7 +28,7 @@ const Footer = () => {
                     </div>
                 </nav>
                 <p className="mt-8 text-xs leading-6 text-center text-gray-400">
-                    © TEXT MESSAGE..TEXT MESSAGE..TEXT MESSAGE..
+                    © 2025 lsngmin Project. All rights reserved.
                 </p>
             </div>
         </section>

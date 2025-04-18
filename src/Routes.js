@@ -12,6 +12,7 @@ import Signup from "./pages/Signup/Signup";
 import FreeTrial from "./pages/FreeTrial/FreeTrial";
 import {AuthProvider} from "./components/Api/Auth/AuthProvider";
 import OAuthRedirectPage from "./pages/Auth/Auth";
+import Issue from "./pages/Issue/Issue";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -65,8 +66,19 @@ function AnimatedRoutes() {
 
                     }
                     />
-
-
+                    <Route
+                        path="/issue"
+                        element={
+                            <motion.div
+                                // initial={{ opacity: 0, y: 20 }}
+                                // animate={{ opacity: 1, y: 0 }}
+                                // exit={{ opacity: 0, y: -20 }}
+                                // transition={{ duration: 0.3 }}
+                            >
+                                <Issue />
+                            </motion.div>
+                        }
+                    />
             </Routes>
         </AnimatePresence>
     );

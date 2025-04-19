@@ -13,6 +13,8 @@ import FreeTrial from "./pages/FreeTrial/FreeTrial";
 import {AuthProvider} from "./components/Api/Auth/AuthProvider";
 import OAuthRedirectPage from "./pages/Auth/Auth";
 import Issue from "./pages/Issue/Issue";
+import Page_404 from "./pages/ErrorPage/CustomErrorPage";
+import CustomErrorPage from "./pages/ErrorPage/CustomErrorPage";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -79,6 +81,19 @@ function AnimatedRoutes() {
                             </motion.div>
                         }
                     />
+                <Route
+                    path="/*"
+                    element={
+                        <motion.div
+                            // initial={{ opacity: 0, y: 20 }}
+                            // animate={{ opacity: 1, y: 0 }}
+                            // exit={{ opacity: 0, y: -20 }}
+                            // transition={{ duration: 0.3 }}
+                        >
+                            <CustomErrorPage status={"404"} />
+                        </motion.div>
+                    }
+                />
             </Routes>
         </AnimatePresence>
     );

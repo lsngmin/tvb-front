@@ -59,12 +59,12 @@ const Navigation = () => {
         <header className="bg-white">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-6 lg:px-8 pb-0">
                 <div className="flex lg:flex-1">
-                    <a href="/" className="-m-1.5 p-1.5">
+                    <a href="/" className="-m-1.5 p-1.5 relative z-20">
                         <span className="sr-only">truebox</span>
                         <img className="h-8 w-auto" src={Logo} alt="truebox"/>
                     </a>
                 </div>
-                <div className="flex lg:hidden">
+                <div className="flex lg:hidden relative z-20">
                     <button
                         type="button"
                         onClick={() => setMobileMenuOpen(true)}
@@ -75,7 +75,7 @@ const Navigation = () => {
                     </button>
                 </div>
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-                    <Popover className="relative">
+                    <Popover className="relative z-20">
                         <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900">
                             Product
                             <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
@@ -122,10 +122,10 @@ const Navigation = () => {
                             </div>
                         </PopoverPanel>
                     </Popover>
-                    <Link className="text-sm/6 font-semibold text-gray-900" to="/free-trial">Free Trial</Link>
-                    <Link className="text-sm/6 font-semibold text-gray-900" to="/pricing">Pricing</Link>
-                    <Link className="text-sm/6 font-semibold text-gray-900" to="/api-docs">Docs</Link>
-                    <Link className="text-sm/6 font-semibold text-gray-900" to="/support">Support</Link>
+                    <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/free-trial">Free Trial</Link>
+                    <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/pricing">Pricing</Link>
+                    <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/api-docs">Docs</Link>
+                    <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/support">Support</Link>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                     <NavigationAuthButton/>
@@ -133,7 +133,7 @@ const Navigation = () => {
             </nav>
 
             <Transition show={mobileMenuOpen} as={Fragment}>
-                <Dialog onClose={setMobileMenuOpen} className="lg:hidden" static>
+                <Dialog onClose={setMobileMenuOpen} className="lg:hidden z-30" static>
                     <Transition.Child
                         as={Fragment}
                         enter="transition-opacity duration-300 ease-out"
@@ -155,7 +155,7 @@ const Navigation = () => {
                         leaveFrom="translate-x-0"
                         leaveTo="translate-x-full"
                     >
-                        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 overflow-y-auto overscroll-none">
+                        <DialogPanel className=" fixed inset-y-0 right-0 z-30 w-full bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 overflow-y-auto overscroll-none">
                             <div className="flex items-center justify-between">
                                 <a href="/" className="-m-1.5 p-1.5">
                                     <span className="sr-only">Your Company</span>

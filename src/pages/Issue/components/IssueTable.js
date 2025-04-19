@@ -55,7 +55,28 @@ function IssueTable() {
 
                         ))
                         ) : (
-                        <p>이슈 데이터가 없습니다.</p>  // 데이터를 불러오기 전에 나타날 메시지
+                        <div className="space-y-4">
+                            {[...Array(3)].map((_, index) => (
+                                <div key={index} >
+                                    <div className="flex justify-between pb-1">
+                                        <span className="inline-flex items-center m-2 px-2 py-1 bg-gray-200 rounded-lg text-xxs sm:text-sm font-semibold text-gray-600">
+                                            <span className="h-3 bg-gray-200 rounded w-1/4 animate-pulse"></span>
+                                        </span>
+
+                                        <span className="inline-flex items-center m-2 px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-lg text-xxs sm:text-sm font-semibold text-green-600">
+                                            <span className="h-3 bg-gray-200 rounded w-1/4 animate-pulse"></span>
+                                        </span>
+                                    </div>
+
+                                    <div className="p-4 border border-gray-300 rounded-lg animate-pulse">
+                                        <h3 className="h-4 bg-gray-200 rounded w-3/4 mb-2 animate-pulse"></h3>
+                                        <p className="h-3 bg-gray-200 rounded w-2/4 mb-3 animate-pulse"></p>
+                                        <span className="h-3 bg-gray-200 rounded w-1/3 animate-pulse"></span>
+                                    </div>
+                                </div>
+                            ))}
+                            <p className="text-center text-gray-500">이슈 데이터를 불러오는 중입니다...</p>
+                        </div>
                         )}
                 </div>
             </div>

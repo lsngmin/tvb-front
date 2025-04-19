@@ -24,14 +24,12 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const fetchAccessToken = async () => {
             try {
-                if (!accessToken) {
+                if (!accessToken) {//액세스 토큰 X -> refresh 호출 -> 액세스 토큰 발급
                     const response = await axios.post(process.env.REACT_APP_API_URL_REFRESH, {}, {withCredentials: true})
                     setAccessToken(response.data.accessToken)
                 }
             } catch (error) {
-                if (error.response.status === 401) {
-                    console.log("401");
-                }
+                //통신 에러 -> 프론트엔드 측 문제 X -> 페이지 정상 렌더링 필요
             } finally {
                 setIsLoading(false);
             }

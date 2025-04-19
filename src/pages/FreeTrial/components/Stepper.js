@@ -5,6 +5,7 @@ import SecondStep from "./SecondStep";
 import { useMediaQuery } from 'react-responsive';
 import MobileStepperComponent from "./MobileStepperComponent";
 import {Transition} from "@headlessui/react";
+import ThirdStep from "./ThirdStep";
 
 const stepper = ["Upload your pic", "2", "S3"];
 
@@ -15,6 +16,12 @@ export default function Stepper() {
     const [hasUploaded, setHasUploaded] = useState(false);
     const [showTransition, setShowTransition] = useState(true);
     const [showStep2Animation, setShowStep2Animation] = useState(false);
+    const [analyzeResult, setAnalyzeResult] = useState({});
+    const [finalCompleted, setFinalCompleted] = useState(false);
+
+    const handleAnalyzeResult = (result) => {
+        setAnalyzeResult(result);
+    }
 
     const nextStep = () => {
         if (currentStep < stepper.length && !loadingStep) {
@@ -38,6 +45,14 @@ export default function Stepper() {
             }, 50);
             return () => clearTimeout(timer);
         }
+        if (currentStep === 3 && !showStep2Animation) {
+            // 약간의 지연을 두고 스텝 2 애니메이션 시작
+            const timer = setTimeout(() => {
+                setShowStep2Animation(true);
+            }, 50);
+            return () => clearTimeout(timer);
+        }
+
     }, [currentStep]);
 
     const DesktopComponent = () => <div className="rounded-2xl shadow-lg border border-gray-200 max-w-7xl mx-auto sm:p-10 p-4">
@@ -53,7 +68,7 @@ export default function Stepper() {
                             <div
                                 className={`rounded-full w-10 h-10 flex items-center justify-center font-bold transition-all
               ${
-                                    isCompleted
+                                    (finalCompleted || isCompleted)
                                         ? "bg-green-500 text-white"
                                         : isActive
                                             ? "bg-blue-600 text-white ring ring-blue-300"
@@ -128,6 +143,38 @@ export default function Stepper() {
                 <>
                     <Transition
                         show={showStep2Animation}
+                        appear={true}
+                        enter="transition-all duration-1000 ease-in-out transform"
+                        enterFrom="translate-x-full opacity-0"
+                        enterTo="translate-x-0 opacity-100"
+                        leave="transition-all duration-1000 ease-in-out transform"
+                        leaveFrom="translate-x-0 opacity-100"
+                        leaveTo="translate-x-full opacity-0"
+                        afterLeave={() => setCurrentStep(3)}
+                    >
+                        <div>
+                            {isMobile ? (
+                                <MobileStepperComponent
+                                    currentStep={currentStep}
+                                    loadingStep={loadingStep}
+                                    stepper={stepper}
+                                    hasUploaded={hasUploaded}
+                                />
+                            ) : null}
+                            <SecondStep
+                                onUploadComplete={() => setShowStep2Animation(false)}
+                                onLoading={(state) => setLoadingStep(state)}
+                                analyzeResult={handleAnalyzeResult}
+                                onShowStep2Animation={(state) => setShowStep2Animation(state)}
+                            />
+                        </div>
+                    </Transition>
+                </>
+            )}
+            {currentStep === 3 && (
+                <>
+                    <Transition
+                        show={showStep2Animation}
                         enter="transition-all duration-1000 ease-in-out transform"
                         enterFrom="translate-x-full opacity-0"
                         enterTo="translate-x-0 opacity-100"
@@ -142,35 +189,14 @@ export default function Stepper() {
                                     hasUploaded={hasUploaded}
                                 />
                             ) : null}
-                            <SecondStep
-                                onUploadComplete={() => setCurrentStep(2)}
+                            <ThirdStep
+                                onUploadComplete={() => setFinalCompleted(true)}
                                 onLoading={(state) => setLoadingStep(state)}
+                                analyzeResult={analyzeResult}
                             />
                         </div>
                     </Transition>
                 </>
-            )}
-            {currentStep === 3 && (
-                <div className="max-w-7xl mx-auto py-10 flex justify-between">
-                    <button
-                        onClick={nextStep}
-                        disabled={currentStep === stepper.length || loadingStep}
-                        className="px-5 py-2 bg-blue-600 text-white rounded-lg
-
-                    hover:bg-blue-700 disabled:opacity-50"
-                    >
-                        {loadingStep ? "Loading..." : "Next"}
-                    </button>
-                    <button
-                        onClick={nextStep}
-                        disabled={currentStep === stepper.length || loadingStep}
-                        className="px-5 py-2 bg-blue-600 text-white rounded-lg
-
-                    hover:bg-blue-700 disabled:opacity-50"
-                    >
-                        {loadingStep ? "Loading..." : "Next"}
-                    </button>
-                </div>
             )}
 
 

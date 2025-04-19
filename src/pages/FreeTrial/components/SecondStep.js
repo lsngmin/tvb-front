@@ -3,7 +3,7 @@ import FileAnalyzeAPI from "./FileAnalyzeAPI"
 import FileUploader from "./FirstStepFileUploader";
 import {ClimbingBoxLoader, GridLoader} from "react-spinners";
 
-export default function SecondStep({onUploadComplete, onLoading}) {
+export default function SecondStep({onUploadComplete, onLoading, analyzeResult, onShowStep2Animation}) {
     useEffect(() => {
         console.log("두 번째 스텝 진입! AI 분석 시작~");
         handleFileChange();
@@ -17,6 +17,8 @@ export default function SecondStep({onUploadComplete, onLoading}) {
         if (response?.status === 200) {
             onLoading(false);
             onUploadComplete();
+            onShowStep2Animation(false)
+            analyzeResult(response.data)
             console.log(response.status);
         } else {
             onLoading(false);

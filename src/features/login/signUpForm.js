@@ -15,7 +15,8 @@ export default function SignUpForm({changeForm}) {
      *   error: string | null
      * }} - 회원가입 함수와 에러 메시지를 반환합니다.
      */
-    const { signup } = signupAPI();
+    const { signup, error } = signupAPI();
+
     const [formState, setFormState] = useState({
         email: '',
         password: '',
@@ -44,7 +45,7 @@ export default function SignUpForm({changeForm}) {
     /**
      * 회원가입 폼 제출 시 호출 되는 함수로, 입력 값 유효성 검사를 수행한 후
      * 회원가입 API 요청을 signup 메서드에 넘겨줍니다.
-     *
+     * @async
      * @param e - onSubmit에서 발생하는 Event Object
      * @returns {Promise<void>} - 비동기 작업을 처리하는 함수로, 회원가입 API 요청을 비동기로 처리합니다.
      */
@@ -61,7 +62,12 @@ export default function SignUpForm({changeForm}) {
                 return;
             }
         }
-        await signup(formState);
+        try {
+            await signup(formState);
+        } catch (error) {
+            setErrorStatus(error.status);
+            setErrorMessage(error.message);
+        }
     };
 
     /**

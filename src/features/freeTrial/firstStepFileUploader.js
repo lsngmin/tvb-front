@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
 export default function FileUploader({ onUpload }) {
+    /*
+    드래그 앤 드롭 기능
+     */
     const [dragging, setDragging] = useState(false);
-
-    //start DRAG & DROP LOGIX
     const handleDragOver = (e) => {
         e.preventDefault();
         setDragging(true);
@@ -11,6 +12,7 @@ export default function FileUploader({ onUpload }) {
     const handleDragLeave = () => {
         setDragging(false);
     };
+    // onUpload에 파일을 담아 상위 컴포넌트에 전달합니다
     const handleDrop = async (e) => {
         e.preventDefault();
         setDragging(false);
@@ -20,14 +22,15 @@ export default function FileUploader({ onUpload }) {
             onUpload(file);
         }
     };
-    //end DRAG & DROP LOGIX
 
+    // 클릭 이벤트 발생 시 파일 업로드 창 활성화
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
             onUpload(file);
         }
     };
+
     return (
         <>
             <div className={`${dragging ? "bg-blue-100 border-blue-400" : "bg-gray-50 border-gray-300"}`}

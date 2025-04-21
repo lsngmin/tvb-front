@@ -1,51 +1,52 @@
 import React, {useState} from "react";
-import axios from "axios";
-import {useLocation, useNavigate} from "react-router-dom";
 
 import LoginErrorMessage from "features/login/loginErrorMessage";
-import {useAuth} from "providers/authProvider";
-
+import SignInAPI from "features/login/api/signInAPI";
+import GoogleLoginButton from "features/login/components/googleLoginButton"
 export default function SignInForm({changeForm}) {
-    const [userId, setUserId] = useState("");
-    const [password, setPassword] = useState("");
-    const { setAccessToken } = useAuth();
-    const navigate = useNavigate();
-    const [errorStatus, setErrorStatus] = useState(null);
-    const [errorMessage, setErrorMessage] = useState(null);
-    const location = useLocation();
-
-    const from = location.state?.from?.pathname || "/";
-
+    // LoginErrorMessage에 전달하기 위한 에러 코드와 메세지
+    const [errorStatus, setErrorStatus] = useState(null),
+        [errorMessage, setErrorMessage] = useState(null),
+        {signIn} = SignInAPI(),
+        [formState, setFormState] = useState({
+            userId: '',
+            password: ''
+        });
+    /**
+     * 로그인 폼 제출시 처리되는 함수입니다. 로그인 요청을 signIn으로 전달하며 입력값은 formstate 입니다.
+     * @async
+     * @param e - onSubmit에서 발생하는 event
+     * @returns {Promise<void>} - 로그인 요청을 비동기로 처리합니다.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const requestData = {
-            user: {
-                userId: userId
-            },
-            password: {
-                password: password
-            },
-        };
-
         try {
-            const response = await axios.post(process.env.REACT_APP_API_URL_SIGNIN , requestData, {withCredentials: true });
-
-            const { accessToken } = response.data;
-            setAccessToken(accessToken);
-            navigate(from, { replace: true });
+            await signIn(formState)
         } catch (error) {
-            setErrorStatus(error?.response?.status)
-            setErrorMessage(error?.response?.data?.message);
+            setErrorStatus(error.status);
+            setErrorMessage(error.message);
         }
-    }
-
-    const googleLoginHandler = () => {
-        window.location.href = process.env.REACT_APP_API_URL_GOOGLE;
     }
     const handleChangeForm = () => {
         changeForm(true)
     }
+
+    /**
+     * 입력 필드의 변경을 처리하는 함수입니다.
+     *
+     * 커링(Currying)된 형태로, 특정 입력 필드의 이름(`field`)을 받아 해당 필드의 값을 업데이트
+     * 사용자 입력이 변경될 때마다 `formState`를 갱신, 이전 에러 메세지 초기화
+     *
+     * @param {String} field - 업데이트할 폼 필드의 이름 (ex -> 'email', 'password')
+     * @returns {(event: React.ChangeEvent<HTMLInputElement>) => void} - 이벤트 핸들러 함수
+     */
+    const handleInputChange = (field) => (event) => {
+        setFormState((prev) => ({
+            ...prev,
+            [field]: event.target.value,
+        }));
+        // 이전에 발생한 에러 메시지를 초기화하여, 폼을 다시 제출할 때 중복된 에러 메시지가 표시되지 않도록 합니다.
+    };
 
     return (
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md border-2 px-2 py-8">
@@ -61,8 +62,8 @@ export default function SignInForm({changeForm}) {
                             type="text"
                             required
                             autoComplete="email"
-                            value={userId}
-                            onChange={(e) => setUserId(e.target.value)}
+                            value={formState.userId}
+                            onChange={handleInputChange("userId")}
                             className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                         />
                     </div>
@@ -86,8 +87,8 @@ export default function SignInForm({changeForm}) {
                             type="password"
                             required
                             autoComplete="current-password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            value={formState.password}
+                            onChange={handleInputChange('password')}
                             className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                         />
                     </div>
@@ -119,14 +120,7 @@ export default function SignInForm({changeForm}) {
                 <div className="flex-1 border-gray-500 border-t-2 border-dotted mr-10"/>
             </div>
             <div className="mx-10">
-                <button
-                    onClick={googleLoginHandler}
-                    className="flex h-10 w-full items-center justify-center gap-2 rounded-md border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
-                    <img
-                        src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"
-                        className="h-[18px] w-[18px] "/>Continue with
-                    Google
-                </button>
+                <GoogleLoginButton/>
             </div>
             <p className="mt-10 text-center text-sm/6 text-gray-500">
                 Not a member yet? {' '}

@@ -13,7 +13,6 @@ function IssueTable() {
                 const data = await fetchData();
                 setIssuesData(data.data);  // 데이터를 상태로 설정
             } catch (error) {
-                console.error("Error fetching data:", error);
             }
         };
         loadIssuesData();

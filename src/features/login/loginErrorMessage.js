@@ -1,14 +1,16 @@
 import React from "react";
 
 export default function LoginErrorMessage({status, message, onClose}) {
+    // 상태코드와 메세지 모두 존재하지 않으면 메세지가 없는 것으로 판단
     if (!status && !message) return null;
-
+    // 메세지의 목록 입니다. Http 상태코드와 그에 상응하는 Messaged
     const messages = {
         422: "Oops! Something doesn’t match.",
         401: "Invalid credentials.",
         400: "Something doesn’t match.",
         default: "Unexpected error occurred.",
     };
+    // 메세지의 우선순위입니다
     const displayMessage = message || messages[status] || messages.default;
 
     return (

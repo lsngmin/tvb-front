@@ -58,7 +58,7 @@ const Navigation = () => {
         <header className="bg-white">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-6 lg:px-8 pb-0">
                 <div className="flex lg:flex-1">
-                    <a href="/public" className="-m-1.5 p-1.5 relative z-20">
+                    <a href="/" className="-m-1.5 p-1.5 relative z-20">
                         <span className="sr-only">truebox</span>
                         <img className="h-8 w-auto" src={Logo} alt="truebox"/>
                     </a>
@@ -156,7 +156,7 @@ const Navigation = () => {
                     >
                         <DialogPanel className=" fixed inset-y-0 right-0 z-30 w-full bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 overflow-y-auto overscroll-none">
                             <div className="flex items-center justify-between">
-                                <a href="/public" className="-m-1.5 p-1.5">
+                                <a href="/" className="-m-1.5 p-1.5">
                                     <span className="sr-only">Your Company</span>
                                     <img className="h-6 w-auto" src={Logo} alt="truebox" />
                                 </a>

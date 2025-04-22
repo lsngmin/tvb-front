@@ -51,7 +51,7 @@ export default function Stepper() {
 
 
     const isMobile = useMediaQuery({ maxWidth: 767 });
-
+    let finalCompleted = false;
     return (
         <div className="mt-20">
             {/*isMobile 보다 화면 크기가 크면 DesktopStepper 컴포넌트 렌더링 작으면 MobileStepper 렌더링*/}
@@ -65,7 +65,7 @@ export default function Stepper() {
                 <DesktopStepper stepper={stepper}
                                 currentStep={currentStep}
                                 loadingStep={loadingStep}
-                                stepCompleted={stepCompleted}
+                                finalCompleted={finalCompleted}
                 />
             }
 
@@ -122,6 +122,7 @@ export default function Stepper() {
                         <ThirdStep onUploadComplete={() => setStepCompleted(true)}
                                    onLoading={(state) => setLoadingStep(state)}
                                    analyzeResult={analyzeResult}
+                                   finalCompleted={()=> {finalCompleted=true}}
                         />
                 </div></Transition></>
             )}

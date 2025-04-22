@@ -1,6 +1,6 @@
 import React from "react";
 
-const DesktopStepper = ({stepper, currentStep, stepCompleted, loadingStep}) => {
+const DesktopStepper = ({stepper, currentStep, finalCompleted, loadingStep}) => {
 
     return (
         <div className="rounded-2xl shadow-lg border border-gray-200 max-w-7xl mx-auto sm:p-10 p-4">
@@ -16,7 +16,7 @@ const DesktopStepper = ({stepper, currentStep, stepCompleted, loadingStep}) => {
                                 <div
                                     className={`rounded-full w-10 h-10 flex items-center justify-center font-bold transition-all
               ${
-                                        (stepCompleted || isCompleted)
+                                        (finalCompleted || isCompleted)
                                             ? "bg-green-500 text-white"
                                             : isActive
                                                 ? "bg-blue-600 text-white ring ring-blue-300"
@@ -26,7 +26,7 @@ const DesktopStepper = ({stepper, currentStep, stepCompleted, loadingStep}) => {
                                     {isActive && loadingStep ? (
                                         <div
                                             className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"/>
-                                    ) : isCompleted ? (
+                                    ) : (isCompleted) ? (
                                         "✓"
                                     ) : (
                                         stepNumber

@@ -37,7 +37,7 @@ export default function PageSection() {
                         <div className="mt-10 flex items-center justify-center">
                             <a
                                 href="/free-trial"
-                                className="rounded-lg bg-indigo-600 px-8 py-4 text-base font-bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-150"
+                                className="rounded-xl bg-sky-400/80 backdrop-blur-sm px-8 py-4 text-base font-semibold text-white ring-1 ring-sky-300/50 shadow-lg shadow-sky-200/50 hover:bg-sky-300/90 hover:shadow-sky-200/60 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400/50 transition-all duration-200"
                             >
                                 Get Started for Free
                             </a>

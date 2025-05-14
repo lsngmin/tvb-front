@@ -29,9 +29,11 @@ export default function PageSection() {
                             Fast insights, zero setup.<br/>
                             Plug into our AI API and go.
                         </h1>
-                        <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
-                            Join us as we enhance our AI image detection capabilities. <br/>Your feedback matters!
+                        <p className="mt-6 text-lg text-slate-600 text-center max-w-3xl mx-auto dark:text-slate-400">
+                            Turn data into decisions in seconds — no ML expertise required<br/>
+                            Our endpoints handle the heavy lifting.
                         </p>
+
                         <div className="mt-10 flex items-center justify-center gap-x-6">
                             <a
                                 href="/free-trial"

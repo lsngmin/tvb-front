@@ -105,6 +105,33 @@ const Navigation = () => {
                                             </a>
                                         ))}
                                     </div>
+// <<<<<<< feature/18-docs-fix
+//                                 ))}
+//                             </div>
+//                             <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+//                                 {callsToAction.map((item) => (
+//                                     <a
+//                                         key={item.name}
+//                                         href={item.href}
+//                                         className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
+//                                     >
+//                                         <item.icon aria-hidden="true" className="size-5 flex-none text-gray-400" />
+//                                         {item.name}
+//                                     </a>
+//                                 ))}
+//                             </div>
+//                         </PopoverPanel>
+//                     </Popover>
+//                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/free-trial">Free Trial</Link>
+//                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/pricing">Pricing</Link>
+//                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/docs">Docs</Link>
+//                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/support">Support</Link>
+//                 </PopoverGroup>
+//                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+//                     <NavigationAuthButton/>
+//                 </div>
+//             </nav>
+// =======
                                 </PopoverPanel>
                             </Popover> */}
                             <Link className="text-xs font-bold text-indigo-600 hover:text-indigo-500 relative z-20" to="/free-trial">Free Trial</Link>
@@ -127,7 +154,6 @@ const Navigation = () => {
                         <NavigationAuthButton/>
                     </div>
                 </nav>
-
                 <Transition show={mobileMenuOpen} as={Fragment}>
                     <Dialog onClose={setMobileMenuOpen} className="lg:hidden z-30" static>
                         <Transition.Child

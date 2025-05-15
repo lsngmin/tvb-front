@@ -123,7 +123,7 @@ const Navigation = () => {
                     </Popover>
                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/free-trial">Free Trial</Link>
                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/pricing">Pricing</Link>
-                    <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/docs">Docs</Link>
+                    <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/api-docs">Docs</Link>
                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/support">Support</Link>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">

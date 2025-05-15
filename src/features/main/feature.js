@@ -1,25 +1,23 @@
-import { ArrowUpOnSquareIcon, CpuChipIcon, ChartBarIcon,} from '@heroicons/react/20/solid'
+import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+
 const features = [
     {
-        name: 'Step 1: Upload an Image',
+        name: 'Push to deploy.',
         description:
-            'Users begin by uploading a suspicious image. Supported formats include SVG, PNG, JPG or GIF',
-        icon: ArrowUpOnSquareIcon,
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+        icon: CloudArrowUpIcon,
     },
     {
-        name: 'Step 2: Deepfake Detection',
-        description:
-            'Our AI model analyzes the content to detect signs of manipulation using deep learning techniques.',
-        icon: CpuChipIcon,
+        name: 'SSL certificates.',
+        description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+        icon: LockClosedIcon,
     },
     {
-        name: 'Step 3: View the Result',
-        description:
-            'Detection results are displayed with confidence scores and visual indicators to help users understand authenticity.',
-        icon: ChartBarIcon,
+        name: 'Database backups.',
+        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
+        icon: ServerIcon,
     },
 ]
-
 
 export default function Feature() {
     return (
@@ -28,39 +26,34 @@ export default function Feature() {
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
                     <div className="lg:pr-8 lg:pt-4">
                         <div className="lg:max-w-lg">
+                            <h2 className="text-base/7 font-semibold text-indigo-600">Deploy faster</h2>
                             <p className="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                                Built for detecting what's real
+                                A better workflow
                             </p>
                             <p className="mt-6 text-lg/8 text-gray-600">
-                                Our mission is to protect users from visual misinformation. With cutting-edge AI models, we analyze
-                                images to detect manipulations and deepfakes in seconds.
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
+                                iste dolor cupiditate blanditiis ratione.
                             </p>
-
                             <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
                                 {features.map((feature) => (
                                     <div key={feature.name} className="relative pl-9">
-                                        <div className="absolute left-1 top-1">
-                                            <feature.icon aria-hidden="true" className="size-5 text-indigo-600" />
-                                        </div>
-                                        <dt className="block font-semibold text-gray-900 mb-1">
+                                        <dt className="inline font-semibold text-gray-900">
+                                            <feature.icon aria-hidden="true" className="absolute left-1 top-1 size-5 text-indigo-600" />
                                             {feature.name}
-                                        </dt>
-                                        <dd className="block">
-                                            {feature.description}
-                                        </dd>
+                                        </dt>{' '}
+                                        <dd className="inline">{feature.description}</dd>
                                     </div>
                                 ))}
                             </dl>
                         </div>
                     </div>
-                    <div className="flex justify-end">
                     <img
-                        src="/upload-ui.png"
-                        alt="Upload UI"
-                        style={{ width: '1000px', height: '400px' }}
-                        className="rounded-xl shadow-xl ring-1 ring-gray-400/10"
+                        alt="Product screenshot"
+                        src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
+                        width={2432}
+                        height={1442}
+                        className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
                     />
-                    </div>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ import FreeTrial from "pages/freeTrial";
 import Issues from "pages/Issues";
 import CustomErrorPage from "pages/CustomErrorPage";
 import Docs from "pages/Docs";
+import Support from "pages/Support";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -91,6 +92,20 @@ function AnimatedRoutes() {
                             // transition={{ duration: 0.3 }}
                         >
                             <CustomErrorPage status={"404"} />
+                        </motion.div>
+                    }
+                />
+
+                <Route
+                    path="/support"
+                    element={
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <Support />
                         </motion.div>
                     }
                 />

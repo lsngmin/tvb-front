@@ -1,173 +1,87 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid2';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import HelpIcon from '@mui/icons-material/Help';
-import SecurityIcon from '@mui/icons-material/Security';
-import SpeedIcon from '@mui/icons-material/Speed';
-import PaymentIcon from '@mui/icons-material/Payment';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import {
+    Help as HelpIcon,
+    Security as SecurityIcon,
+    Speed as SpeedIcon,
+    Payment as PaymentIcon,
+    SupportAgent as SupportAgentIcon
+} from '@mui/icons-material';
+
 import Navigation from '../features/navigation/navigation';
-import { useNavigate } from 'react-router-dom';
 
-const Section = styled(Box)(({ theme }) => ({
-    padding: '3rem 0',
-    position: 'relative',
-    overflow: 'hidden',
-    maxWidth: '1000px',
-    margin: '0 auto',
-    [theme.breakpoints.down('sm')]: {
-        padding: '1.5rem 0',
+const supportItems = [
+    {
+        icon: <HelpIcon className="text-indigo-600 w-6 h-6" />,
+        title: 'What is Deepfake?',
+        description: 'Deepfake is an AI technique that creates or manipulates media to appear real. Our platform helps you detect such content with confidence.',
     },
-}));
-
-const ContentWrapper = styled(Box)(({ theme }) => ({
-    flex: 1, // ✅ 너비 문제 해결 핵심
-    padding: theme.spacing(3),
-    borderRadius: '12px',
-    maxWidth: '900px',
-    width: '100%',
-    margin: '0 auto',
-    background: 'transparent',
-    border: '1px solid #e0e0e0',
-    transition: 'all 0.4s ease-in-out',
-    display: 'flex',
-    flexDirection: 'column',
-    position: 'relative',
-    overflow: 'hidden',
-    height: '100%',
-}));
-
-const SectionTitle = styled(Typography)(({ theme }) => ({
-    fontSize: '2.2rem',
-    fontWeight: 800,
-    textAlign: 'center',
-    marginBottom: '2rem',
-    color: '#1f1f1f',
-    position: 'relative',
-    [theme.breakpoints.down('sm')]: {
-        fontSize: '2rem',
-        marginBottom: '2rem',
+    {
+        icon: <SecurityIcon className="text-indigo-600 w-6 h-6" />,
+        title: 'How accurate is the detection?',
+        description: 'Our AI-powered system achieves over 99% accuracy and is constantly updated to detect the latest deepfake technologies.',
     },
-}));
-
-const IconWrapper = styled('div')({
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1rem',
-    position: 'relative',
-    '& svg': {
-        marginRight: '1rem',
-        fontSize: '1.8rem',
-        color: '#1f1f1f',
-        opacity: 0.9,
-        transition: 'all 0.3s ease-in-out',
-        '&:hover': {
-            opacity: 1,
-            transform: 'scale(1.1)',
-        },
+    {
+        icon: <SpeedIcon className="text-indigo-600 w-6 h-6" />,
+        title: 'How long does analysis take?',
+        description: 'Most analyses complete within seconds. Larger video files may take a few minutes depending on file complexity.',
     },
-});
+    {
+        icon: <PaymentIcon className="text-indigo-600 w-6 h-6" />,
+        title: 'What are the pricing options?',
+        description: 'Our pricing starts at $29/month, with flexible plans for individuals, teams, and enterprises.',
+    },
+    {
+        icon: <SupportAgentIcon className="text-indigo-600 w-6 h-6" />,
+        title: 'How can I get support?',
+        description: 'We offer 24/7 support via email, chat, and phone. Our team typically responds within 24 hours.',
+    },
+];
 
-const Support = () => {
-    const navigate = useNavigate();
-
+export default function Support() {
     return (
         <>
-            {/* 고정 네비게이션 */}
-            <Box sx={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1200 }}>
-                <Navigation />
-            </Box>
+            {/* ✅ Navigation은 고정 아님 – Main 페이지 방식으로 처리 */}
+            <Navigation />
 
-            {/* 본문 콘텐츠 */}
-            <Box
-                sx={{
-                    width: '100%',
-                    maxWidth: '1000px',
-                    margin: '0 auto',
-                    overflow: 'hidden',
-                    bgcolor: '#ffffff',
-                    paddingTop: '90px', // 네비게이션 높이만큼
-                }}
-            >
-                <Section>
-                    <SectionTitle>Frequently Asked Questions</SectionTitle>
-                    <Grid container spacing={10}>
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <HelpIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        What is Deepfake?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    Deepfake is a type of artificial intelligence that can create or manipulate images and videos to make them appear authentic. Our service helps detect these manipulated contents to protect your digital assets.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
+            <div className="bg-white relative isolate overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
+                {/* 배경 장식 */}
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
+                <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
 
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <SecurityIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        How accurate is the detection?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    Our AI-powered detection system achieves over 99% accuracy in identifying deepfake content. We continuously update our models to stay ahead of new deepfake techniques.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
+                {/* 제목 */}
+                <div className="mx-auto max-w-4xl text-center">
+                    <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight">
+                        How can we help you?
+                    </h1>
+                    <p className="mt-6 text-lg text-slate-600 max-w-3xl mx-auto">
+                        Find answers to the most frequently asked questions about our deepfake detection service.
+                    </p>
+                </div>
 
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <SpeedIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        How long does analysis take?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    Most analyses are completed within seconds. For longer videos, the process may take a few minutes depending on the file size and complexity.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
-
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <PaymentIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        What are the pricing options?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    We offer flexible pricing plans starting from $29/month. Each plan includes a certain number of analyses per month. Contact us for custom enterprise solutions.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
-
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <SupportAgentIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        How can I get support?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    Our support team is available 24/7 through email, live chat, and phone. We typically respond to inquiries within 24 hours.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
-                    </Grid>
-                </Section>
-            </Box>
+                {/* FAQ 카드 */}
+                <div className="mt-20 mx-auto max-w-6xl flex flex-wrap gap-x-10 gap-y-16 justify-center">
+                    {supportItems.map((item, index) => (
+                        <div
+                            key={index}
+                            className="w-full md:w-[calc(50%-1.25rem)] bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-100 hover:bg-indigo-50/20"
+                        >
+                            <div className="flex items-start gap-4">
+                                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 shadow-sm">
+                                    {item.icon}
+                                </div>
+                                <div>
+                                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
+                                        {item.title}
+                                    </h3>
+                                    <p className="mt-2 text-md sm:text-lg text-slate-600/90 leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </>
     );
-};
-
-export default Support;
+}

@@ -30,7 +30,9 @@ const SignInAPI = () => {
         try {
             const response = await axios.post(process.env.REACT_APP_API_URL_SIGNIN, requestData, {
                 withCredentials: true,
-                'X-Requested-ID': '12345',
+                headers: {
+                    'X-Request-ID': '12345',
+                }
             });
             setAccessToken(response.data.accessToken);
             navigate(from, {replace: true});

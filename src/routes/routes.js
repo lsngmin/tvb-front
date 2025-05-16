@@ -6,6 +6,7 @@ import Login from "pages/login";
 import FreeTrial from "pages/freeTrial";
 import Issues from "pages/Issues";
 import CustomErrorPage from "pages/CustomErrorPage";
+import Docs from "pages/Docs";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -66,6 +67,20 @@ function AnimatedRoutes() {
                             </motion.div>
                         }
                     />
+                <Route
+                    path="/docs"
+                    element={
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <Docs />
+                        </motion.div>
+                    }
+                />
+
                 <Route
                     path="/*"
                     element={

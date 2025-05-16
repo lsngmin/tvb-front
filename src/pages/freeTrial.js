@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {useAuth} from "providers/authProvider";
 import {UploadProvider} from "features/freeTrial/provider/uploadProvider";
 
-
+import AnalyzeProcess from "features/freeTrial/analyzeProcess";
 import Stepper from "../features/freeTrial/stepper";
 import Banner from "../features/banner/banner";
 import Navigation from "../features/navigation/navigation";
@@ -16,6 +16,8 @@ const FreeTrial = () => {
     const [result, setResult] = useState(null);
     const {accessToken, isLoading} = useAuth();
 
+
+
     useEffect(() => {
         if (!isLoading && !accessToken) {
             navigate("/login");
@@ -26,9 +28,12 @@ const FreeTrial = () => {
 
     return (
         <UploadProvider>
-        <Banner/>
-    <Navigation/>
-            <Stepper/>
+            {/*<Banner/>*/}
+            <Navigation/>
+
+            <AnalyzeProcess/>
+
+            {/*<Stepper/>*/}
         </UploadProvider>
     );
 };

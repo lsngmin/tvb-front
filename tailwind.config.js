@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  safelist: [
+    "bg-gradient-to-br",
+    "from-white",
+    "to-gray-200",
+    "shadow-md",
+  ],
   theme: {
     extend: {
       fontSize: {

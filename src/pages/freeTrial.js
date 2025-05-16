@@ -16,6 +16,8 @@ const FreeTrial = () => {
     const [result, setResult] = useState(null);
     const {accessToken, isLoading} = useAuth();
 
+
+
     useEffect(() => {
         if (!isLoading && !accessToken) {
             navigate("/login");
@@ -28,7 +30,9 @@ const FreeTrial = () => {
         <UploadProvider>
             {/*<Banner/>*/}
             <Navigation/>
+
             <AnalyzeProcess/>
+
             {/*<Stepper/>*/}
         </UploadProvider>
     );

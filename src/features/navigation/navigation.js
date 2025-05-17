@@ -105,6 +105,47 @@ const Navigation = () => {
                                             </a>
                                         ))}
                                     </div>
+// <<<<<<< feature/docs-update
+//                                 ))}
+//                             </div>
+//                             <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+//                                 {callsToAction.map((item) => (
+//                                     <a
+//                                         key={item.name}
+//                                         href={item.href}
+//                                         className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
+//                                     >
+//                                         <item.icon aria-hidden="true" className="size-5 flex-none text-gray-400" />
+//                                         {item.name}
+//                                     </a>
+//                                 ))}
+//                             </div>
+//                         </PopoverPanel>
+//                     </Popover>
+//                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/free-trial">Free Trial</Link>
+//                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/pricing">Pricing</Link>
+//                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/docs">Docs</Link>
+//                     <Link className="text-sm/6 font-semibold text-gray-900 relative z-20" to="/support">Support</Link>
+//                 </PopoverGroup>
+//                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+//                     <NavigationAuthButton/>
+//                 </div>
+//             </nav>
+
+//             <Transition show={mobileMenuOpen} as={Fragment}>
+//                 <Dialog onClose={setMobileMenuOpen} className="lg:hidden z-30" static>
+//                     <Transition.Child
+//                         as={Fragment}
+//                         enter="transition-opacity duration-300 ease-out"
+//                         enterFrom="opacity-0"
+//                         enterTo="opacity-100"
+//                         leave="transition-opacity duration-200 ease-in"
+//                         leaveFrom="opacity-100"
+//                         leaveTo="opacity-0"
+//                     >
+//                         <div className="fixed inset-0 z-10 bg-black/25" />
+//                     </Transition.Child>
+// =======
 // <<<<<<< feature/18-docs-fix
 //                                 ))}
 //                             </div>
@@ -132,41 +173,42 @@ const Navigation = () => {
 //                 </div>
 //             </nav>
 // =======
-                                </PopoverPanel>
-                            </Popover> */}
-                            <Link className="text-xs font-bold text-indigo-600 hover:text-indigo-500 relative z-20" to="/free-trial">Free Trial</Link>
-                            <Link className="text-xs font-semibold text-gray-600 hover:text-gray-900 relative z-20" to="/pricing">Pricing</Link>
-                            <Link className="text-xs font-semibold text-gray-600 hover:text-gray-900 relative z-20" to="/api-docs">Docs</Link>
-                            <Link className="text-xs font-semibold text-gray-600 hover:text-gray-900 relative z-20" to="/support">Support</Link>
-                        </PopoverGroup>
-                    </div>
-                    <div className="flex lg:hidden relative z-20">
-                        <button
-                            type="button"
-                            onClick={() => setMobileMenuOpen(true)}
-                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                        >
-                            <span className="sr-only">Open main menu</span>
-                            <Bars3Icon aria-hidden="true" className="size-6"/>
-                        </button>
-                    </div>
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <NavigationAuthButton/>
-                    </div>
-                </nav>
-                <Transition show={mobileMenuOpen} as={Fragment}>
-                    <Dialog onClose={setMobileMenuOpen} className="lg:hidden z-30" static>
-                        <Transition.Child
-                            as={Fragment}
-                            enter="transition-opacity duration-300 ease-out"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-200 ease-in"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0"
-                        >
-                            <div className="fixed inset-0 z-10 bg-black/25"/>
-                        </Transition.Child>
+//                                 </PopoverPanel>
+//                             </Popover> */}
+//                             <Link className="text-xs font-bold text-indigo-600 hover:text-indigo-500 relative z-20" to="/free-trial">Free Trial</Link>
+//                             <Link className="text-xs font-semibold text-gray-600 hover:text-gray-900 relative z-20" to="/pricing">Pricing</Link>
+//                             <Link className="text-xs font-semibold text-gray-600 hover:text-gray-900 relative z-20" to="/api-docs">Docs</Link>
+//                             <Link className="text-xs font-semibold text-gray-600 hover:text-gray-900 relative z-20" to="/support">Support</Link>
+//                         </PopoverGroup>
+//                     </div>
+//                     <div className="flex lg:hidden relative z-20">
+//                         <button
+//                             type="button"
+//                             onClick={() => setMobileMenuOpen(true)}
+//                             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+//                         >
+//                             <span className="sr-only">Open main menu</span>
+//                             <Bars3Icon aria-hidden="true" className="size-6"/>
+//                         </button>
+//                     </div>
+//                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+//                         <NavigationAuthButton/>
+//                     </div>
+//                 </nav>
+//                 <Transition show={mobileMenuOpen} as={Fragment}>
+//                     <Dialog onClose={setMobileMenuOpen} className="lg:hidden z-30" static>
+//                         <Transition.Child
+//                             as={Fragment}
+//                             enter="transition-opacity duration-300 ease-out"
+//                             enterFrom="opacity-0"
+//                             enterTo="opacity-100"
+//                             leave="transition-opacity duration-200 ease-in"
+//                             leaveFrom="opacity-100"
+//                             leaveTo="opacity-0"
+//                         >
+//                             <div className="fixed inset-0 z-10 bg-black/25"/>
+//                         </Transition.Child>
+// >>>>>>> develop
 
                         <Transition.Child
                             as={Fragment}

@@ -33,7 +33,7 @@ export default function FirstStep({onUploadComplete, onLoading}) {
     };
 
     return (
-     <div className={`max-w-sm sm:max-w-7xl mx-auto p-6 mt-10 rounded-2xl shadow-lg border border-gray-200`}>
+     <div className={`max-w-sm sm:max-w-4xl mx-auto p-6 mt-10 rounded-2xl shadow-lg border border-gray-200`}>
          <FileUploader onUpload={handleFileChange} />
      </div>
  );

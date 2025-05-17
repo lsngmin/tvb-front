@@ -28,7 +28,7 @@ const Footer = () => {
                     </div>
                 </nav>
                 <p className="mt-8 text-xs leading-6 text-center text-gray-400">
-                    © 2025 lsngmin Project. All rights reserved.
+                    © 2025 Gravifox Project. All rights reserved.
                 </p>
             </div>
         </section>

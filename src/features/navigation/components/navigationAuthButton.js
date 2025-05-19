@@ -33,7 +33,10 @@ export default function NavigationAuthButton() {
                     </Link>
                 </>
             ) : (
-                <Link className="text-xs font-semibold text-gray-600 hover:text-gray-900 relative z-20" to="/login">
+                <Link
+                    to="/login"
+                    className="block px-3 py-2 text-xs font-semibold text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded transition"
+                >
                     Log in <span aria-hidden="true">&rarr;</span>
                 </Link>
             )}

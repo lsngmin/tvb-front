@@ -39,10 +39,7 @@ export default function FileUploader({ onUpload }) {
                  onDrop={handleDrop}
             >
                 <label htmlFor="dropzone-file" className="flex justify-center border-2
-                border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50
-                dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600
-                dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                >
+                border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                     <div className="flex flex-col items-center py-24">
                         <svg className="w-8 py-6  text-gray-500 dark:text-gray-400" aria-hidden="true"
                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">

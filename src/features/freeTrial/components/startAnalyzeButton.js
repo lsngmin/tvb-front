@@ -9,7 +9,7 @@ const StartAnalyzeButton = ({resetImage, startAnalyze}) => {
 
     return (
         <div>
-            <a onclick={handleStartAnalyze}
+            <a onClick={handleStartAnalyze}
                className="m-2 inline-flex items-center justify-center rounded-xl border border-transparent bg-blue-600 px-5 py-3 font-medium text-white hover:bg-blue-700">
                 Start Analyze
             </a>

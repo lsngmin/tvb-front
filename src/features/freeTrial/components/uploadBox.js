@@ -2,11 +2,15 @@ import React, {useState} from "react";
 import FileUploader from "../firstStepFileUploader";
 import {useUpload} from "../provider/uploadProvider";
 import FileUploadAPI from "../api/fileUploadAPI";
+import StartAnalyzeButton from "./startAnalyzeButton";
+import Spinner from "./loadingSpinner";
 
 const UploadBox = () => {
     const {setUploadData} = useUpload();
     const {fileUpload} = FileUploadAPI();
     const [image, setImage] = useState();
+    const [startAnalyze, setStartAnalyze] = useState(false);
+
 
     /**
      *  파일을 받으면 onLoading을 true로 변경하여 LoadingSpinner가 동작하게 합니다.
@@ -30,17 +34,35 @@ const UploadBox = () => {
         }
     };
 
+    const handleResetImage = () => {
+        URL.revokeObjectURL(image)
+        setImage(undefined);
+    }
+    const handleStartAnalyze = () => {
+        setStartAnalyze(true)
+    }
+
     return (
         <>
             {image
                 ?
                 <div className={`max-w-sm sm:max-w-4xl mx-auto p-6 mt-10 rounded-2xl shadow-lg border border-gray-200`}>
-                    <img src={image} alt="Preview" />
+                    <div className="flex flex-col items-center justify-center h-64 gap-4">
+                        <img src={image} alt="Preview" className="cursor-pointer"/>
+                        {startAnalyze
+                            ?
+                            <Spinner/>
+                            :
+                            <StartAnalyzeButton resetImage = {handleResetImage} startAnalyze={handleStartAnalyze}/>
+                        }
+                    </div>
+
                 </div>
                 :
                 <div className={`max-w-sm sm:max-w-4xl mx-auto p-6 mt-10 rounded-2xl shadow-lg border border-gray-200`}>
                     <FileUploader onUpload={handleFileChange} />
                 </div>
+
             }
         </>
     );

@@ -27,7 +27,7 @@ const featureCardGrid = () => {
 
 
     return (
-        <div className="flex gap-16 items-center justify-center">
+        <div className="flex gap-16 items-center justify-center mb-24">
             {title.map((title, index) => (
                 <div key={index} className="flex flex-col items-center gap-2 max-w-xs whitespace-normal break-words min-h-full">
                     <div className="w-14 h-14 rounded-full bg-white ring-0 shadow-lg flex items-center justify-center">

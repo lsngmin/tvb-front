@@ -1,5 +1,4 @@
 import React from "react";
-import FirstStep from "./firstStep";
 import FeatureCardGrid from "./components/featureCardGrid";
 import UploadBox from "./components/uploadBox";
 import TitleSection from "./components/titleSection";

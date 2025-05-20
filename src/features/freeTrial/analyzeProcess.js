@@ -18,7 +18,7 @@ export default function analyzeProcess() {
         <div className="mt-4 mx-10">
             <div className="grid grid-cols-1 grid-rows-1 gap-10">
                 <div className="">
-                    <div className="items-center justify-center gap-2 mt-8">
+                    <div className="items-center justify-center gap-2 mt-4">
                         <h1 className="text-center font-extrabold tracking-tight text-transparent text-4xl sm:text-4xl xl:text-5xl text-slate-600 h-full">
                             Manipulated Image Detection
                         </h1>
@@ -32,11 +32,14 @@ export default function analyzeProcess() {
                         </p>
                     </div>
 
-                    <div>
+                    <div className="mb-6">
                         <FirstStep/>
                     </div>
                 </div>
+                <div className="mt-2">
                 <FeatureCardGrid/>
+                </div>
+
             </div>
         </div>
         </div>

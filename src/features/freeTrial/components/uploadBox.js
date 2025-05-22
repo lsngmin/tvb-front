@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import FileUploader from "../firstStepFileUploader";
+import FileUploader from "../FileUploader";
 import {useUpload} from "../provider/uploadProvider";
 import FileUploadAPI from "../api/fileUploadAPI";
 import StartAnalyzeButton from "./startAnalyzeButton";

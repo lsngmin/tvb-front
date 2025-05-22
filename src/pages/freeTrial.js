@@ -4,8 +4,7 @@ import {useAuth} from "providers/authProvider";
 import {UploadProvider} from "features/freeTrial/provider/uploadProvider";
 
 import AnalyzeProcess from "features/freeTrial/analyzeProcess";
-import Stepper from "../features/freeTrial/stepper";
-import Banner from "../features/banner/banner";
+
 import Navigation from "../features/navigation/navigation";
 
 const FreeTrial = () => {

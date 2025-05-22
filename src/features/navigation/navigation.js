@@ -56,7 +56,7 @@ const Navigation = () => {
 
     return (
         <header className="relative inset-x-0 top-0 z-10 bg-white/70 backdrop-blur-sm shadow-[0_1px_3px_0_rgb(0,0,0,0.05)]">
-            <nav aria-label="Global" className="mx-auto flex items-center justify-between px-6 py-1.5 lg:px-8">
+            <nav aria-label="Global" className="mx-auto flex items-center justify-between px-6 lg:px-8">
                 <div className="flex items-center gap-x-10 lg:flex-1">
                     <a href="/" className="-m-1.5 p-1.5 relative z-20">
                         <span className="sr-only">truebox</span>

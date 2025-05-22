@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 
 import {useAuth} from "providers/authProvider";
+import avatar from "assets/1.jpg";
+import AvatarButton from "./avatarButton";
 
 export default function NavigationAuthButton() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,29 +22,7 @@ export default function NavigationAuthButton() {
     return (
         <nav className="flex justify-end gap-4 p-4">
             {isLoggedIn ? (
-                <>
-                    <div className="relative rounded-2xl px-3 py-2 mr-2 text-xs text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                        <a
-                            href="#"
-                            className="font-semibold text-indigo-600 relative z-20"
-                        >
-                            View Dashboard
-                        </a>
-                    </div>
-                    {/*<Link className="text-sm/6 font-semibold text-gray-900 mr-2" to="/login">*/}
-                    {/*    Started In DashBoard*/}
-                    {/*</Link>*/}
-
-                    <button
-                        onClick={() => {
-                            logout();
-                            navigate("/");
-                        }}
-                        className="block px-3 py-2 text-xs font-semibold text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded transition"
-                    >
-                        Log out <span aria-hidden="true">&rarr;</span>
-                    </button>
-                </>
+                    <AvatarButton avatar={avatar} />
             ) : (
                 <Link
                     to="/login"

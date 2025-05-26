@@ -8,6 +8,7 @@ import Issues from "pages/Issues";
 import CustomErrorPage from "pages/CustomErrorPage";
 import Docs from "pages/Docs";
 import Profile from "../pages/Profile";
+import Dashboard from "../pages/Dashboard";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -64,6 +65,19 @@ function AnimatedRoutes() {
                             transition={{ duration: 0.6, ease: "easeOut" }}
                         >
                             <Profile />
+                        </motion.div>
+                    }
+                />
+                <Route
+                    path='/dashboard'
+                    element={
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                        >
+                            <Dashboard />
                         </motion.div>
                     }
                 />

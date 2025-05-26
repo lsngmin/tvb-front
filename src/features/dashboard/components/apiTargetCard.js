@@ -39,7 +39,7 @@ const ApiTargetCard = () => {
                             />
                         </svg>
                         <div
-                            className="absolute top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                            className="absolute top-40 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                             <span className="text-4xl font-bold text-gray-600 ">{progress * 100}%</span>
                             <span
                                 className="mt-10 absolute left-1/2 top-full -translate-x-1/2 -translate-y-[95%] rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-600 ">+10%</span>

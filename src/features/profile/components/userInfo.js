@@ -3,6 +3,7 @@ import profileAPI from "../api/profileAPI";
 import {useAuth} from "../../../providers/authProvider";
 import useDeleteAccountAPI from "../api/useDeleteAccountAPI";
 import useChangePasswordAPI from "../api/useChangePasswordAPI";
+import { useNavigate } from "react-router-dom";
 
 export default function UserInfo() {
 
@@ -10,7 +11,8 @@ export default function UserInfo() {
     const { changePassword } = useChangePasswordAPI();
     const { deleteAccount } = useDeleteAccountAPI();
     const [profileData, setProfileData] = useState({});
-    const { accessToken } = useAuth();
+    const { accessToken, logout } = useAuth();
+    const navigate = useNavigate();
 
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -50,6 +52,8 @@ export default function UserInfo() {
             setCurrentPassword(""); // 입력값 초기화
             setNewPassword("");
             setConfirmPassword("");
+            logout();
+            navigate("/");
         } catch (e) {
             alert("비밀번호 변경 실패");
         }
@@ -60,6 +64,8 @@ export default function UserInfo() {
         try {
             await deleteAccount(); // 커스텀 훅 사용
             alert("계정이 삭제되었습니다.");
+            logout();
+            navigate("/");
             // 로그아웃/리디렉션 등 후처리 필요시 추가
         } catch (e) {
             alert("계정 삭제 실패");

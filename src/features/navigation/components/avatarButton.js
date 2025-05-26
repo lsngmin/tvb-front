@@ -11,6 +11,10 @@ export default function AvatarButton({ avatar }) {
     const handleClick = () => {
         navigate("/profile");
     };
+    const handleClickNavi = () => {
+        navigate("/dashboard");
+    };
+
     return (
         <>
             <Menu as="div" className="relative ">
@@ -42,7 +46,7 @@ export default function AvatarButton({ avatar }) {
                         </MenuItem>
                         <MenuItem>
                             <a
-                                href="#"
+                                onClick={handleClickNavi}
                                 className="flex items-center gap-2 block px-4 py-2 text-sm font-mono text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 data-[focus]:outline-none"
                             >
                                 <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

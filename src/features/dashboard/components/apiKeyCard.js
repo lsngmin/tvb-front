@@ -1,6 +1,5 @@
 import {useRef, useState} from "react";
 import {Transition} from "@headlessui/react";
-import Dashboard from "../../../pages/Dashboard";
 
 const ApiKeyCard = () => {
     const [copied, setCopied] = useState(false);

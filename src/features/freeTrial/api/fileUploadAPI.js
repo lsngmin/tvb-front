@@ -1,5 +1,6 @@
 import axios from "axios";
 import {useAuth} from "providers/authProvider";
+import {FILEUPLOAD_ENDPOINTS} from "../../../api/endPointRoute";
 
 const FileUploadAPI = () =>  {
     const {accessToken} = useAuth();
@@ -15,7 +16,7 @@ const FileUploadAPI = () =>  {
             const formData = new FormData();
             formData.append("files", file);
 
-            return await axios.post(process.env.REACT_APP_API_URL_UPLOAD, formData, {
+            return await axios.post(FILEUPLOAD_ENDPOINTS.UPLOAD, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Authorization": `Bearer ${accessToken}`

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from "../../../providers/authProvider";
+import {PROFILE_ENDPOINTS} from "../../../api/endPointRoute";
 
-const PROFILE_BASE_URL = process.env.REACT_APP_API_URL_PROFILE;
 
 export default function useChangePasswordAPI() {
     const [loading, setLoading] = useState(false);
@@ -15,7 +15,7 @@ export default function useChangePasswordAPI() {
         setError(null);
         try {
             await axios.patch(
-                PROFILE_BASE_URL + "password",
+                PROFILE_ENDPOINTS.POST_PASSWORD,
                 { currentPassword, newPassword },
                 {
                     headers: { Authorization: `Bearer ${accessToken}` }

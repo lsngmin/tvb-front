@@ -1,6 +1,7 @@
 import {useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {AUTH_ENDPOINTS} from "../../../api/endPointRoute";
 
 
 const SignupAPI = () => {
@@ -28,7 +29,7 @@ const SignupAPI = () => {
             }
         };
         try {
-            const response = await axios.post(process.env.REACT_APP_API_URL_SIGNUP, requestData, { withCredentials: true });
+            const response = await axios.post(AUTH_ENDPOINTS.SIGNUP, requestData, { withCredentials: true });
 
             const {userId} = response.data;
             if(userId === formState.email) {

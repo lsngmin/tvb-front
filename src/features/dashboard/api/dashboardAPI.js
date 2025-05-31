@@ -1,12 +1,14 @@
 import axios from "axios";
 import {useAuth} from "providers/authProvider";
+import {DASHBOARD_ENDPOINTS} from "../../../api/endPointRoute";
 
 export const DashboardAPI = () => {
+
     const {accessToken} = useAuth();
 
     const fetchData = async () => {
         try {
-            return await axios.get(process.env.REACT_APP_API_URL_DASHBOARD, {
+            return await axios.get(DASHBOARD_ENDPOINTS.GET_INFO, {
                 headers: {
                     "Authorization": `Bearer ${accessToken}`
                 }, withCredentials: true
@@ -23,7 +25,7 @@ export const GenerateApiKeyAPI = () => {
 
     const generateToken = async () => {
         try {
-            return await axios.post(process.env.REACT_APP_API_URL_DASHBOARD_GENERATE, {}, {
+            return await axios.post(DASHBOARD_ENDPOINTS.GENERATE, {}, {
                 headers: {
                     "Authorization": `Bearer ${accessToken}`
                 }, withCredentials: true

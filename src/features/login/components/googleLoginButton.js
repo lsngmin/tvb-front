@@ -1,8 +1,9 @@
 import React from "react";
+import {AUTH_ENDPOINTS} from "../../../api/endPointRoute";
 
 const GoogleLoginButton = () => {
     const googleLoginHandler = () => {
-        window.location.href = process.env.REACT_APP_API_URL_GOOGLE;
+        window.location.href = AUTH_ENDPOINTS.GOOGLE;
     };
     return (
         <button

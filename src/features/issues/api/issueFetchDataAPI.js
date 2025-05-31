@@ -1,5 +1,6 @@
 import axios from "axios";
 import {useAuth} from "providers/authProvider";
+import {ISSUE_ENDPOINTS} from "../../../api/endPointRoute";
 
 const IssueFetchDataAPI = () => {
     const {accessToken} = useAuth();
@@ -11,7 +12,7 @@ const IssueFetchDataAPI = () => {
      */
     const fetchData = async () => {
         try {
-            return await axios.get(process.env.REACT_APP_API_URL_ISSUE, {
+            return await axios.get(ISSUE_ENDPOINTS.GET_ISSUE, {
                 headers: {
                     "Authorization": `Bearer ${accessToken}`
                 }, withCredentials: true

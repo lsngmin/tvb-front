@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from "../../../providers/authProvider";
-
-const PROFILE_BASE_URL = process.env.REACT_APP_API_URL_PROFILE;
+import {PROFILE_ENDPOINTS} from "../../../api/endPointRoute";
 
 export default function useDeleteAccountAPI() {
     const [loading, setLoading] = useState(false);
@@ -14,7 +13,7 @@ export default function useDeleteAccountAPI() {
         setError(null);
         try {
             await axios.delete(
-                PROFILE_BASE_URL,
+                PROFILE_ENDPOINTS.DELETE_ACCOUNT,
                 {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 }

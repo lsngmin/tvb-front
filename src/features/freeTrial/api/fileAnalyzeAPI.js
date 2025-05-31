@@ -1,6 +1,8 @@
 import axios from "axios";
 import {useAuth} from "providers/authProvider";
 import {useUpload} from "features/freeTrial/provider/uploadProvider";
+import {FREETRIAL_ENDPOINTS} from "../../../api/endPointRoute";
+
 
 const FileAnalyzeAPI = () =>  {
     const {accessToken} = useAuth();
@@ -18,7 +20,7 @@ const FileAnalyzeAPI = () =>  {
      */
     const fileAnalyze = async () => {
         try {
-            return await axios.post(`${process.env.REACT_APP_API_URL_ANALYZE}/${uploadData}/analyze`, null, {
+            return await axios.post(`${FREETRIAL_ENDPOINTS.ANALYZE}/${uploadData}/analyze`, null, {
                 headers: {
                     "Authorization": `Bearer ${accessToken}`
                 }, withCredentials: true

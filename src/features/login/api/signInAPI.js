@@ -1,6 +1,7 @@
 import {useAuth} from "providers/authProvider";
 import axios from "axios";
 import {useLocation, useNavigate} from "react-router-dom";
+import {AUTH_ENDPOINTS} from "../../../api/endPointRoute";
 
 const SignInAPI = () => {
     const location = useLocation(),
@@ -28,7 +29,7 @@ const SignInAPI = () => {
         };
 
         try {
-            const response = await axios.post(process.env.REACT_APP_API_URL_SIGNIN, requestData, {
+            const response = await axios.post(AUTH_ENDPOINTS.SIGNIN, requestData, {
                 withCredentials: true,
                 headers: {
                     'X-Request-ID': '12345',

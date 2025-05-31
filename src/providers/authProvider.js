@@ -1,6 +1,7 @@
 import {createContext, useContext, useEffect, useState} from "react";
 
 import axios from "axios";
+import {AUTH_ENDPOINTS} from "../api/endPointRoute";
 
 const AuthContext = createContext();
 
@@ -13,7 +14,7 @@ export const AuthProvider = ({ children }) => {
         setAccessToken(null);
         setUserInfo(null);
 
-        axios.post(process.env.REACT_APP_API_URL_LOGOUT, {}, {
+        axios.post(AUTH_ENDPOINTS.SIGNOUT, {}, {
             withCredentials: true
         })
         setTimeout(() => {
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         const fetchAccessToken = async () => {
             try {
                 if (!accessToken) {//액세스 토큰 X -> refresh 호출 -> 액세스 토큰 발급
-                    const response = await axios.post(process.env.REACT_APP_API_URL_REFRESH, {}, {withCredentials: true})
+                    const response = await axios.post(AUTH_ENDPOINTS.REFRESH, {}, {withCredentials: true})
                     setAccessToken(response.data.accessToken)
                 }
             } catch (error) {
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
         const fetchUserData = async () => {
             if (accessToken) {
-                axios.get(process.env.REACT_APP_API_URL_ME, {
+                axios.get(AUTH_ENDPOINTS.ME, {
                     headers: {
                         "Authorization": `Bearer ${accessToken}`
                     },

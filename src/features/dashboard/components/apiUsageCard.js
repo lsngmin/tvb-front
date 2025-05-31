@@ -1,5 +1,6 @@
 
-export const RemainingApiRequests = ({apiKey}) => {
+export const RemainingApiRequests = ({left}) => {
+    const leftApiRequests = left;
     return (
         <div
             className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
@@ -12,7 +13,7 @@ export const RemainingApiRequests = ({apiKey}) => {
             </div>
             <div className="flex items-end justify-between mt-5">
                 <div><span className="text-sm text-gray-500 dark:text-gray-400">API requests left</span><h4
-                    className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">3,782</h4></div>
+                    className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">{leftApiRequests}</h4></div>
                 <span
                     className="inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-sm bg-blue-50 text-blue-600"><svg
                     className="fill-current" width="1em" height="1em" viewBox="0 0 13 12" fill="none"
@@ -24,7 +25,9 @@ export const RemainingApiRequests = ({apiKey}) => {
 };
 
 
-export const UsedApiRequests = ({apiKey}) => {
+export const UsedApiRequests = ({left}) => {
+    const leftApiRequests = left;
+
     return (
         <div
             className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
@@ -36,7 +39,7 @@ export const UsedApiRequests = ({apiKey}) => {
             </div>
             <div className="flex items-end justify-between mt-5">
                 <div><span className="text-sm text-gray-500 dark:text-gray-400">API requests used</span><h4
-                    className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">5,359</h4></div>
+                    className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">{2000- leftApiRequests}</h4></div>
                 <span
                     className="inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-sm bg-red-100 text-red-600">
                         <svg

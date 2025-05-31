@@ -1,13 +1,34 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {Transition} from "@headlessui/react";
+import {DashboardAPI, GenerateApiKeyAPI} from "../api/dashboardAPI";
+import {useAuth} from "../../../providers/authProvider";
 
-const ApiKeyCard = () => {
+const ApiKeyCard = ({token}) => {
     const [copied, setCopied] = useState(false);
     const [generate, setGenerate] = useState(false);
     const [apikey, setApikey] = useState("");
 
     const timerRef1 = useRef(null);
     const timerRef2 = useRef(null);
+
+    useEffect(() => {
+        if(token !== null) {
+            setApikey(token);
+        }
+    }, []);
+    const {generateToken} = GenerateApiKeyAPI();
+
+    const generateApiKey = () => {
+        const apikey = async () => {
+            try {
+                const t = await generateToken();
+                console.log("apikey", t);
+                return t.data;
+            } catch (error) {
+                console.error(error);
+            }
+        };
+    }
 
     const triggerCopyToast = () => {
         navigator.clipboard.writeText(apikey)
@@ -21,16 +42,32 @@ const ApiKeyCard = () => {
                 // setCopy(false) 등 원하는 동작
             });
     };
-    const triggerGenerateToast = () => {
-        //api 통신 후 성공한 값을 setApikey에 할당하면 됨 ㅇㅇ.
-        //api키는 db에 저장할거니까 useEffect로 페이지 로딩시 저장된 api 키 받아오면 돼
-        setApikey("API키를 여기다 집어넣자")
+    const triggerGenerateToast = async () => {
+        try {
+            // 1) 토큰 발급 API 호출
+            const response = await generateToken();
+            // axios 기준: response.data 에 실제 바디가 들어있다고 가정
+            // 만약 response.data 가 { token: '...' } 형태라면:
+            const token = response.data;
+            // 만약 response.data 가 바로 토큰 문자열이라면:
+            // const token = response.data;
 
-        setGenerate(true);
-        // 이미 타이머가 있으면 클리어
-        if (timerRef2.current) clearTimeout(timerRef2.current);
-        // timeout ms 후에 사라짐
-        timerRef2.current = setTimeout(() => setGenerate(false), 3000);
+            // 2) state 업데이트
+            setApikey(token);
+            setGenerate(true);
+
+            // 3) 기존 타이머가 있으면 클리어
+            if (timerRef2.current) {
+                clearTimeout(timerRef2.current);
+            }
+            // 4) 3초 뒤에 토스트 숨기기
+            timerRef2.current = setTimeout(() => {
+                setGenerate(false);
+            }, 3000);
+
+        } catch (error) {
+            console.error("API 키 생성 중 오류:", error);
+        }
     };
 
     return (

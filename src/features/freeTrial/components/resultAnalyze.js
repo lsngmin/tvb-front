@@ -1,4 +1,3 @@
-import ProgressBar from "./progressBar";
 import React, {useState, useEffect} from "react";
 
 const ResultAnalyze = ({analyzeResult }) => {
@@ -94,6 +93,8 @@ const ResultAnalyze = ({analyzeResult }) => {
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 import React from "react";
 
-const ApiTargetCard = () => {
-    const progress = 0.8555;
+const ApiTargetCard = ({left}) => {
+    const progress = ((2000- left) / 2000);
 
     return (
         <div className="col-span-12 xl:col-span-5 ">
@@ -40,7 +40,7 @@ const ApiTargetCard = () => {
                         </svg>
                         <div
                             className="absolute top-40 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                            <span className="text-4xl font-bold text-gray-600 ">{progress * 100}%</span>
+                            <span className="text-4xl font-bold text-gray-600 ">{(progress * 100).toFixed(2)}%</span>
                             <span
                                 className="mt-10 absolute left-1/2 top-full -translate-x-1/2 -translate-y-[95%] rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-600 ">+10%</span>
                         </div>

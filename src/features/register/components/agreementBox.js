@@ -5,7 +5,12 @@ import {useNavigate} from "react-router-dom";
 const AgreementBox = () => {
     const navigate = useNavigate();
     const NavigateToRegister = () => {
-        navigate("/register");
+        if (!canProceed) return;
+        const params = new URLSearchParams({
+            termsCookie: cookie.toString(),
+            termsMarketing: marketing.toString(),
+        });
+        navigate(`/register?${params.toString()}`);
     }
     const [tos, setTos] = useState(false);
     const [privacy, setPrivacy] = useState(false);

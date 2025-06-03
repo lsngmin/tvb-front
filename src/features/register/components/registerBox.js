@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from "react";
 import SignInAPI from "../../login/api/signInAPI";
-import { useNavigate } from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import signupAPI from "../../login/api/signupAPI";
 
 const RegisterBox = () => {
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+
+    const termsCookieParam = searchParams.get("termsCookie");
+    const termsMarketingParam = searchParams.get("termsMarketing");
+
+    useEffect(() => {
+        if (termsCookieParam == null && termsMarketingParam == null) {
+            navigate("/agree", { replace: true });
+        }
+        formState.termsCookie = termsCookieParam;
+        formState.termsMarketing = termsMarketingParam;
+
+    }, [termsCookieParam, termsMarketingParam, navigate]);
+
     const { signup, error } = signupAPI();
 
     const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +28,8 @@ const RegisterBox = () => {
         password: "",
         name: "",
         dob: "",
+        termsCookie: "",
+        termsMarketing: "",
     });
     const [errors, setErrors] = useState({
         email: null,
@@ -23,7 +40,6 @@ const RegisterBox = () => {
     const [canSubmit, setCanSubmit] = useState(false);
 
     const { signIn } = SignInAPI();
-    const navigate = useNavigate();
 
     // ─── 유효성 검사 함수들 ─────────────────────────────────────────────────────
 
@@ -105,7 +121,7 @@ const RegisterBox = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!canSubmit) return;
-
+        console.log(formState);
         try {
             // 예시: signIn 대신 회원가입 API 호출로 교체
             await signup(formState);

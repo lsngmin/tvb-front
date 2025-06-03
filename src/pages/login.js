@@ -1,14 +1,17 @@
-import Logo from "assets/logo.svg";
+import Logo from "assets/logovg.svg";
 import React, { Fragment, useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import SignInForm from "features/login/signInForm";
 import SignUpForm from "features/login/signUpForm";
+import LoginImage from "features/login/components/loginImage"
+import {useNavigate} from "react-router-dom";
+import Footer from "../features/footer/footer";
 
 export default function Login() {
     const [isSignIn, setIsSignIn] = useState(true);
     const [showSignIn, setShowSignIn] = useState(true);
     const [showSignUp, setShowSignUp] = useState(false);
-
+    const navigate = useNavigate();
     // 폼 전환 상태 관리
     const switchToSignUp = () => {
         setShowSignIn(false);
@@ -33,15 +36,19 @@ export default function Login() {
         setShowSignIn(isSignIn);
         setShowSignUp(!isSignIn);
     }, []);
-
+    const navigateToHome = () => {
+        navigate("/");
+    }
     return (
-        <div className="mx-auto flex max-w-7xl items-center bg-white">
-            <div className="flex min-h-full flex-1 flex-col justify-center px-6 lg:px-8 mt-12">
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <img className="mx-auto h-16 w-auto" src={Logo} alt="truebox" />
+        <div className="p-20 ">
+            <div className="mt-14">
+                <div className="col-span-2 flex justify-center items-center" >
+                    <h2 onClick={navigateToHome} translate="no" className="cursor-pointer select-none text-[clamp(28px,5vw,60px)]
+                    font-extrabold tracking-tight leading-none text-indigo-500 drop-shadow-md mb-12">
+                        GRAVIFOX.
+                    </h2>
                 </div>
-
-                <div className="relative w-full min-h-96">
+                <div className="flex flex-1 justify-center items-center">
                     {/* 로그인 폼 */}
                     <Transition
                         show={showSignIn}
@@ -54,29 +61,30 @@ export default function Login() {
                         leaveTo="-translate-x-full opacity-0"
                         appear={true}
                     >
-                        <div className="absolute w-full">
+                        <div className="">
                             <SignInForm changeForm={() => switchToSignUp()} />
                         </div>
                     </Transition>
 
-                    {/* 회원가입 폼 */}
-                    <Transition
-                        show={showSignUp}
-                        as={Fragment}
-                        enter="transition duration-1000 ease-in-out transform"
-                        enterFrom="-translate-x-full opacity-0"
-                        enterTo="translate-x-0 opacity-100"
-                        leave="transition duration-1000 ease-in-out transform"
-                        leaveFrom="translate-x-0 opacity-100"
-                        leaveTo="translate-x-full opacity-0"
-                        appear={true}
-                    >
-                        <div className="absolute w-full">
-                            <SignUpForm changeForm={() => switchToSignIn()} />
-                        </div>
-                    </Transition>
+                    {/*/!* 회원가입 폼 *!/*/}
+                    {/*<Transition*/}
+                    {/*    show={showSignUp}*/}
+                    {/*    as={Fragment}*/}
+                    {/*    enter="transition duration-1000 ease-in-out transform"*/}
+                    {/*    enterFrom="-translate-x-full opacity-0"*/}
+                    {/*    enterTo="translate-x-0 opacity-100"*/}
+                    {/*    leave="transition duration-1000 ease-in-out transform"*/}
+                    {/*    leaveFrom="translate-x-0 opacity-100"*/}
+                    {/*    leaveTo="translate-x-full opacity-0"*/}
+                    {/*    appear={true}*/}
+                    {/*>*/}
+                    {/*    <div className="absolute w-full">*/}
+                    {/*        <SignUpForm changeForm={() => switchToSignIn()} />*/}
+                    {/*    </div>*/}
+                    {/*</Transition>*/}
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }

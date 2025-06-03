@@ -10,6 +10,8 @@ import Docs from "pages/Docs";
 import Profile from "../pages/Profile";
 import Dashboard from "../pages/Dashboard";
 import Pricing from "pages/Pricing";
+import Agree from "pages/Agree";
+import Register from "../pages/Register";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -105,6 +107,32 @@ function AnimatedRoutes() {
                             transition={{ duration: 0.3 }}
                         >
                             <Docs />
+                        </motion.div>
+                    }
+                />
+                <Route
+                    path="/agree"
+                    element={
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <Agree />
+                        </motion.div>
+                    }
+                />
+                <Route
+                    path="/register"
+                    element={
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <Register />
                         </motion.div>
                     }
                 />

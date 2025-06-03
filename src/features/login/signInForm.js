@@ -3,7 +3,10 @@ import React, {useState} from "react";
 import LoginErrorMessage from "features/login/loginErrorMessage";
 import SignInAPI from "features/login/api/signInAPI";
 import GoogleLoginButton from "features/login/components/googleLoginButton"
+import {useNavigate} from "react-router-dom";
 export default function SignInForm({changeForm}) {
+    const navigate = useNavigate();
+
     // LoginErrorMessage에 전달하기 위한 에러 코드와 메세지
     const [errorStatus, setErrorStatus] = useState(null),
         [errorMessage, setErrorMessage] = useState(null),
@@ -28,7 +31,7 @@ export default function SignInForm({changeForm}) {
         }
     }
     const handleChangeForm = () => {
-        changeForm(true)
+        navigate("/agree")
     }
 
     /**

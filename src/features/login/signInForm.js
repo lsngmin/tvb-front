@@ -3,7 +3,10 @@ import React, {useState} from "react";
 import LoginErrorMessage from "features/login/loginErrorMessage";
 import SignInAPI from "features/login/api/signInAPI";
 import GoogleLoginButton from "features/login/components/googleLoginButton"
+import {useNavigate} from "react-router-dom";
 export default function SignInForm({changeForm}) {
+    const navigate = useNavigate();
+
     // LoginErrorMessage에 전달하기 위한 에러 코드와 메세지
     const [errorStatus, setErrorStatus] = useState(null),
         [errorMessage, setErrorMessage] = useState(null),
@@ -28,7 +31,7 @@ export default function SignInForm({changeForm}) {
         }
     }
     const handleChangeForm = () => {
-        changeForm(true)
+        navigate("/agree")
     }
 
     /**
@@ -49,7 +52,7 @@ export default function SignInForm({changeForm}) {
     };
 
     return (
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md border-2 px-2 py-8">
+        <div className="mx-auto w-full min-w-96 border px-4 py-8 rounded-lg shadow-md">
             <form onSubmit={handleSubmit} className="space-y-6 px-10">
                 <div>
                     <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
@@ -60,11 +63,12 @@ export default function SignInForm({changeForm}) {
                             id="userId"
                             name="userId"
                             type="text"
-                            required
                             autoComplete="email"
                             value={formState.userId}
                             onChange={handleInputChange("userId")}
-                            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            className=" block w-[22rem] rounded-md bg-white px-3 py-4 text-base text-gray-900
+                            outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400
+                            focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                         />
                     </div>
                 </div>
@@ -85,11 +89,10 @@ export default function SignInForm({changeForm}) {
                             id="password"
                             name="password"
                             type="password"
-                            required
                             autoComplete="current-password"
                             value={formState.password}
                             onChange={handleInputChange('password')}
-                            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            className="block w-full rounded-md bg-white px-3 py-4 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                         />
                     </div>
                 </div>
@@ -97,7 +100,7 @@ export default function SignInForm({changeForm}) {
                 <div>
                     <button
                         type="submit"
-                        className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-4 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                         Sign in
                     </button>

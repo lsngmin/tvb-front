@@ -22,7 +22,7 @@ const SignupAPI = () => {
                 loginType: "EMAIL"
             },
             profile: {
-                nickname: String(Math.floor(Math.random() * 100000))
+                nickname: formState.name
             },
             password: {
                 password: formState.password

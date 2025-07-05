@@ -12,6 +12,7 @@ import Dashboard from "../pages/Dashboard";
 import Pricing from "pages/Pricing";
 import Agree from "pages/Agree";
 import Register from "../pages/Register";
+import Support from "pages/Support";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -161,6 +162,19 @@ function AnimatedRoutes() {
                         <Pricing />
                     </motion.div>
                 } />
+                <Route
+                    path="/support"
+                    element={
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <Support />
+                        </motion.div>
+                    }
+                />
             </Routes>
         </AnimatePresence>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
@@ -8,6 +8,10 @@ import SecurityIcon from '@mui/icons-material/Security';
 import SpeedIcon from '@mui/icons-material/Speed';
 import PaymentIcon from '@mui/icons-material/Payment';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
 import Navigation from '../features/navigation/navigation';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +27,7 @@ const Section = styled(Box)(({ theme }) => ({
 }));
 
 const ContentWrapper = styled(Box)(({ theme }) => ({
-    flex: 1, // ✅ 너비 문제 해결 핵심
+    flex: 1,
     padding: theme.spacing(3),
     borderRadius: '12px',
     maxWidth: '900px',
@@ -37,6 +41,11 @@ const ContentWrapper = styled(Box)(({ theme }) => ({
     position: 'relative',
     overflow: 'hidden',
     height: '100%',
+    cursor: 'pointer',
+    '&:hover': {
+        borderColor: '#1976d2',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    },
 }));
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -52,26 +61,78 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     },
 }));
 
+const AccordionHeader = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    padding: theme.spacing(2, 0),
+    cursor: 'pointer',
+}));
+
+const HeaderContent = styled(Box)({
+    display: 'flex',
+    alignItems: 'center',
+    flex: 1,
+});
+
 const IconWrapper = styled('div')({
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '1rem',
+    marginRight: '1rem',
     position: 'relative',
     '& svg': {
-        marginRight: '1rem',
         fontSize: '1.8rem',
         color: '#1f1f1f',
         opacity: 0.9,
         transition: 'all 0.3s ease-in-out',
-        '&:hover': {
-            opacity: 1,
-            transform: 'scale(1.1)',
-        },
     },
 });
 
+const AccordionContent = styled(Box)(({ theme }) => ({
+    padding: theme.spacing(2, 0, 2, 0),
+    borderTop: '1px solid #e0e0e0',
+    marginTop: theme.spacing(2),
+}));
+
 const Support = () => {
     const navigate = useNavigate();
+    const [expandedItems, setExpandedItems] = useState({});
+
+    const handleToggle = (index) => {
+        setExpandedItems(prev => ({
+            ...prev,
+            [index]: !prev[index]
+        }));
+    };
+
+    const faqData = [
+        {
+            icon: <HelpIcon />,
+            title: "What is Deepfake?",
+            content: "Deepfake is a type of artificial intelligence that can create or manipulate images and videos to make them appear authentic. Our service helps detect these manipulated contents to protect your digital assets."
+        },
+        {
+            icon: <SecurityIcon />,
+            title: "How accurate is the detection?",
+            content: "Our AI-powered detection system achieves over 99% accuracy in identifying deepfake content. We continuously update our models to stay ahead of new deepfake techniques."
+        },
+        {
+            icon: <SpeedIcon />,
+            title: "How long does analysis take?",
+            content: "Most analyses are completed within seconds. For longer videos, the process may take a few minutes depending on the file size and complexity."
+        },
+        {
+            icon: <PaymentIcon />,
+            title: "What are the pricing options?",
+            content: "We offer flexible pricing plans starting from $29/month. Each plan includes a certain number of analyses per month. Contact us for custom enterprise solutions."
+        },
+        {
+            icon: <SupportAgentIcon />,
+            title: "How can I get support?",
+            content: "Our support team is available 24/7 through email, live chat, and phone. We typically respond to inquiries within 24 hours."
+        }
+    ];
 
     return (
         <>
@@ -93,76 +154,61 @@ const Support = () => {
             >
                 <Section>
                     <SectionTitle>Frequently Asked Questions</SectionTitle>
-                    <Grid container spacing={10}>
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <HelpIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        What is Deepfake?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    Deepfake is a type of artificial intelligence that can create or manipulate images and videos to make them appear authentic. Our service helps detect these manipulated contents to protect your digital assets.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
-
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <SecurityIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        How accurate is the detection?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    Our AI-powered detection system achieves over 99% accuracy in identifying deepfake content. We continuously update our models to stay ahead of new deepfake techniques.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
-
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <SpeedIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        How long does analysis take?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    Most analyses are completed within seconds. For longer videos, the process may take a few minutes depending on the file size and complexity.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
-
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <PaymentIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        What are the pricing options?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    We offer flexible pricing plans starting from $29/month. Each plan includes a certain number of analyses per month. Contact us for custom enterprise solutions.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
-
-                        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-                            <ContentWrapper>
-                                <IconWrapper>
-                                    <SupportAgentIcon />
-                                    <Typography variant="h3" component="h2" sx={{ fontWeight: 700, fontSize: '1.5rem', color: '#1f1f1f' }}>
-                                        How can I get support?
-                                    </Typography>
-                                </IconWrapper>
-                                <Typography variant="h6" sx={{ fontSize: '1rem', lineHeight: 1.6, color: '#333333' }}>
-                                    Our support team is available 24/7 through email, live chat, and phone. We typically respond to inquiries within 24 hours.
-                                </Typography>
-                            </ContentWrapper>
-                        </Grid>
+                    <Grid container spacing={3}>
+                        {faqData.map((faq, index) => (
+                            <Grid item xs={12} key={index}>
+                                <ContentWrapper onClick={() => handleToggle(index)}>
+                                    <AccordionHeader>
+                                        <HeaderContent>
+                                            <IconWrapper>
+                                                {faq.icon}
+                                            </IconWrapper>
+                                            <Typography
+                                                variant="h3"
+                                                component="h2"
+                                                sx={{
+                                                    fontWeight: 700,
+                                                    fontSize: '1.5rem',
+                                                    color: '#1f1f1f',
+                                                    flex: 1
+                                                }}
+                                            >
+                                                {faq.title}
+                                            </Typography>
+                                        </HeaderContent>
+                                        <IconButton
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleToggle(index);
+                                            }}
+                                            sx={{
+                                                color: '#1f1f1f',
+                                                '&:hover': {
+                                                    backgroundColor: 'rgba(25, 118, 210, 0.1)',
+                                                }
+                                            }}
+                                        >
+                                            {expandedItems[index] ? <RemoveIcon /> : <AddIcon />}
+                                        </IconButton>
+                                    </AccordionHeader>
+                                    <Collapse in={expandedItems[index]}>
+                                        <AccordionContent>
+                                            <Typography
+                                                variant="h6"
+                                                sx={{
+                                                    fontSize: '1rem',
+                                                    lineHeight: 1.6,
+                                                    color: '#333333',
+                                                    paddingLeft: '3.8rem' // 아이콘과 제목 공간만큼 들여쓰기
+                                                }}
+                                            >
+                                                {faq.content}
+                                            </Typography>
+                                        </AccordionContent>
+                                    </Collapse>
+                                </ContentWrapper>
+                            </Grid>
+                        ))}
                     </Grid>
                 </Section>
             </Box>

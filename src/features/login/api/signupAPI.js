@@ -26,6 +26,10 @@ const SignupAPI = () => {
             },
             password: {
                 password: formState.password
+            },
+            terms: {
+                termsCookie: formState.termsCookie,
+                termsMarketing: formState.termsMarketing
             }
         };
         try {

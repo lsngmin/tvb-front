@@ -14,6 +14,9 @@ import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import Navigation from '../features/navigation/navigation';
 import { useNavigate } from 'react-router-dom';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+
 
 const Section = styled(Box)(({ theme }) => ({
     padding: '3rem 0',
@@ -30,7 +33,7 @@ const ContentWrapper = styled(Box)(({ theme }) => ({
     flex: 1,
     padding: theme.spacing(3),
     borderRadius: '12px',
-    maxWidth: '900px',
+    maxWidth: '1000px',
     width: '100%',
     margin: '0 auto',
     background: 'transparent',
@@ -90,6 +93,7 @@ const IconWrapper = styled('div')({
 });
 
 const AccordionContent = styled(Box)(({ theme }) => ({
+    padding: theme.spacing(2, 4),
     padding: theme.spacing(2, 0, 2, 0),
     borderTop: '1px solid #e0e0e0',
     marginTop: theme.spacing(2),
@@ -110,10 +114,10 @@ const Support = () => {
         {
             icon: <HelpIcon />,
             title: "What is Deepfake?",
-            content: "Deepfake is a type of artificial intelligence that can create or manipulate images and videos to make them appear authentic. Our service helps detect these manipulated contents to protect your digital assets."
+            content: "Deepfake refers to artificial intelligence (AI) deep learning technology used to synthesize a specific person's face or voice onto other videos, images, or audio, making them appear or sound as if they are real. These manipulations can be incredibly sophisticated, making them very difficult to distinguish from genuine media."
         },
         {
-            icon: <SecurityIcon />,
+            icon: <PrecisionManufacturingIcon />,
             title: "How accurate is the detection?",
             content: "Our AI-powered detection system achieves over 99% accuracy in identifying deepfake content. We continuously update our models to stay ahead of new deepfake techniques."
         },
@@ -123,14 +127,14 @@ const Support = () => {
             content: "Most analyses are completed within seconds. For longer videos, the process may take a few minutes depending on the file size and complexity."
         },
         {
-            icon: <PaymentIcon />,
-            title: "What are the pricing options?",
-            content: "We offer flexible pricing plans starting from $29/month. Each plan includes a certain number of analyses per month. Contact us for custom enterprise solutions."
+            icon: <SecurityIcon />,
+            title: "Are uploaded files handled securely?",
+            content: "Yes, all uploaded files are processed securely with encryption and are used solely for deepfake detection purposes. Once the analysis is complete, files are automatically deleted from our servers after a certain period. We comply with personal information protection laws and are committed to maintaining the confidentiality of your personal information and uploaded files."
         },
         {
-            icon: <SupportAgentIcon />,
-            title: "How can I get support?",
-            content: "Our support team is available 24/7 through email, live chat, and phone. We typically respond to inquiries within 24 hours."
+            icon: <ReportProblemIcon />,
+            title: "Can a non-deepfake be falsely detected as a deepfake?",
+            content: "Yes, although rare, it can happen. Various factors such as lighting, video quality, or specific stylistic expressions can sometimes lead to genuine media being falsely detected. If you suspect a false positive, try re-analyzing a different, similar media file or consider seeking expert assistance. We are continuously improving our system to reduce false positive rates."
         }
     ];
 

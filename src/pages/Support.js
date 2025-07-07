@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import HelpIcon from '@mui/icons-material/Help';
 import SecurityIcon from '@mui/icons-material/Security';
 import SpeedIcon from '@mui/icons-material/Speed';
+import PaymentIcon from '@mui/icons-material/Payment';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import IconButton from '@mui/material/IconButton';
@@ -92,6 +94,7 @@ const IconWrapper = styled('div')({
 
 const AccordionContent = styled(Box)(({ theme }) => ({
     padding: theme.spacing(2, 4),
+    padding: theme.spacing(2, 0, 2, 0),
     borderTop: '1px solid #e0e0e0',
     marginTop: theme.spacing(2),
 }));
@@ -200,6 +203,7 @@ const Support = () => {
                                                     fontSize: '1rem',
                                                     lineHeight: 1.6,
                                                     color: '#333333',
+                                                    paddingLeft: '3.8rem' // 아이콘과 제목 공간만큼 들여쓰기
                                                 }}
                                             >
                                                 {faq.content}

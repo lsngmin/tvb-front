@@ -93,7 +93,8 @@ const ResultAnalyze = ({analyzeResult }) => {
                             </div>
                         </div>
                     </div>
-
+                    <p className="text-right p-2 mt-2 font-semibold">score : 인공지능이 진짜라고 생각한 점수 0~100 점 까지 있어요</p>
+                    <p className="text-right p-2 font-semibold">duration : 예측하는데 수행된 시간을 의미해요</p>
 
                 </div>
             </div>
